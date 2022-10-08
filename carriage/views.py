@@ -7,3 +7,6 @@ def test(request):
 
 def carriage_main(request):
     pass
+
+def carriage_result(request):
+    pass

@@ -1,5 +1,7 @@
 from django.contrib import admin
 
-from carriage.models import Test
+from carriage.models import CustTerritory, Country, City, Coefficient, Way
 
-admin.site.register(Test)
+for x in (CustTerritory, Country, City, Coefficient, Way):
+    admin.site.register(x)
+
