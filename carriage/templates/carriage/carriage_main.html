@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>SELECT VERTICES</h1>
+
+<div>
+    <p>
+        <form action="" method="post"> {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Старт">
+        </form>
+    </p>
+</div>
+{% endblock %}
