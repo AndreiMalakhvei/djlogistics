@@ -22,7 +22,6 @@ class Country(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name='Country', null=False)
     cust_territory = models.ForeignKey(CustTerritory, on_delete=models.CASCADE, related_name='cust_terr')
     flag_large = models.ImageField(upload_to='img/flaglarge')
-    flag_medium = models.ImageField(upload_to='img/flagmedium')
     flag_small = models.ImageField(upload_to='img/flagsmall')
 
     class Meta:
@@ -66,7 +65,7 @@ class Coefficient(models.Model):
         return str(f'{self.coeff_value} for {self.coeff_name}')
 
 
-class Way(models.Model):
+class Distance(models.Model):
     from_city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='start',
                                   verbose_name='City of departure')
     to_city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='finish',
@@ -82,3 +81,4 @@ class Way(models.Model):
     def __str__(self):
         return str(f'from {self.from_city} to {self.to_city}')
 
+list_of_models = [CustTerritory, Country, City, Coefficient, Distance]

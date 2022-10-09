@@ -1,12 +1,15 @@
 from django.shortcuts import render
-from carriage.models import Test
+from carriage.models import Test, Country
+
 
 def test(request):
-    test_var = Test.objects.get(pk=1)
-    return render(request, 'carriage/index.html', {'test_var': test_var})
+    country = Country.objects.get(pk=1)
+    return render(request, 'carriage/index.html', {'country': country})
+
 
 def carriage_main(request):
     pass
+
 
 def carriage_result(request):
     pass
