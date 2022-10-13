@@ -33,6 +33,8 @@ class Vertex:
         self._worktime = self._distance / 60
         self._totaltime = 0
         self.time = previous
+
+
         self.value = self.distance
         Vertex.vertices.append(self)
 
@@ -94,7 +96,7 @@ class FirstVertex:
 
 
 
-def shortest(start_str, finish_str):
+def shortest(start_str, finish_str, selection):
     graph = get_graph()
     # Создаём первый экземпляр класса. Нужно вручную определить значения всех аттрибутов
     start = FirstVertex(start_str, graph)

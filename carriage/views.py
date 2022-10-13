@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from carriage.models import Test, Country
-from carriage.routefinder import get_graph, shortest
+from carriage.routefinder import shortest
 from carriage.forms import TestForm
 
 
@@ -15,7 +15,8 @@ def carriage_main(request):
         if form.is_valid():
             first = form.cleaned_data['from_city']
             finish = form.cleaned_data['to_city']
-            res = shortest(first.name, finish.name)
+            selection = form.cleaned_data['selection']
+            res = shortest(first.name, finish.name, selection)
             return render(request, 'carriage/carriage_result.html', {'res':res})
     form = TestForm()
     return render(request, 'carriage/carriage_main.html', {'form':form})
