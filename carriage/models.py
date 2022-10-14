@@ -81,4 +81,16 @@ class Distance(models.Model):
     def __str__(self):
         return str(f'from {self.from_city} to {self.to_city}')
 
-list_of_models = [CustTerritory, Country, City, Coefficient, Distance]
+
+class BorderCrossing(models.Model):
+    from_cust_territory = models.ForeignKey(CustTerritory, on_delete=models.CASCADE,
+                                            related_name='territory_of_departure',
+                                            verbose_name='Customs territory of departure')
+    to_cust_territory = models.ForeignKey(CustTerritory, on_delete=models.CASCADE,
+                                            related_name='territory_of_destination',
+                                            verbose_name='Customs territory of destination')
+    approx_time = models.IntegerField(null=False, verbose_name='Approximated time to cross the border')
+    add_price = models.IntegerField(null=False, verbose_name='Costs for border-crossing', default=1)
+
+
+list_of_models = [CustTerritory, Country, City, Coefficient, Distance, BorderCrossing]

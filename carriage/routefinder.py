@@ -1,4 +1,5 @@
-from carriage.models import Distance, City
+from carriage.models import Distance, City, BorderCrossing
+from django.db.models import Q
 
 
 def get_graph():
@@ -19,30 +20,43 @@ def get_graph():
 class Vertex:
     vertices = []
     qs = City.objects.select_related('country')
-    def __init__(self, items_tuple, graph, previous):
+    qs_add = BorderCrossing.objects.all()
+
+    def __init__(self, items_tuple, graph, previous, selection):
         self.name = items_tuple[0][0]
         self.trans_type = items_tuple[0][1]
-        self._distance = items_tuple[1][0]
-        self.distance = self._distance + previous.distance
-        self._price = items_tuple[1][1] * self._distance
-        self.price = self._price + previous.price
-        self.previous = previous.name
+        self.previous_name = previous.name
         self.destinations = graph[self.name]
         self.visited = False
+        self._added_time = 0
+        self._added_price = 0
+
+        if Vertex.qs.get(name=self.name).country.cust_territory != \
+                Vertex.qs.get(name=previous.name).country.cust_territory:
+            added_value = Vertex.qs_add.get(Q(from_cust_territory_id= Vertex.qs.get(name=previous.name).country.cust_territory.cust_territory)
+                           & Q(to_cust_territory_id=Vertex.qs.get(name=self.name).country.cust_territory.cust_territory))
+            self._added_time = added_value.approx_time
+            self._added_price = added_value.add_price
+
+        self._distance = items_tuple[1][0]
+        self.distance = self._distance + previous.distance
+
+        # self._price = items_tuple[1][1] * self._distance
+        self.price = round(items_tuple[1][1] * self._distance + previous.price + self._added_price)
 
         self._worktime = self._distance / 60
-        self._totaltime = 0
         self.time = previous
 
+        if selection == '1':
+            self.value = self.time
+        else:
+            self.value = self.price
 
-        self.value = self.distance
         Vertex.vertices.append(self)
-
-
 
     @property
     def time(self):
-        return self._totaltime + self._worktime
+        return round(self._totaltime + self._worktime)
 
     @time.setter
     def time(self, previous):
@@ -52,15 +66,7 @@ class Vertex:
         b = a // 8
         self._worktime = a % 8
         checked_time = previous._totaltime + (a - self._worktime) + b * 10
-        if self.crossed_border_check(previous):
-            self._totaltime = 36 + checked_time + (checked_time // 120) * 36
-        else:
-            self._totaltime = checked_time + (checked_time // 120) * 36
-
-    def crossed_border_check(self, previous):
-        if Vertex.qs.get(name=self.name).country.cust_territory != Vertex.qs.get(name=previous.name).country.cust_territory:
-            return True
-        return False
+        self._totaltime = checked_time + (checked_time // 120) * 36 + self._added_time
 
     def get_log(self, start):
         self.start = start.name
@@ -68,7 +74,7 @@ class Vertex:
         k = self
         while k.name != start.name:
             for i in Vertex.vertices:
-                if i.name == k.previous:
+                if i.name == k.previous_name:
                     self.log.append(i.name)
                     k = i
         self.log.reverse()
@@ -91,9 +97,8 @@ class FirstVertex:
         self.destinations = graph[self.name]
         self._worktime = 0.00001
         self._totaltime = 0
-        self.previous = None
+        self.previous_name = None
         Vertex.vertices.append(self)
-
 
 
 def shortest(start_str, finish_str, selection):
@@ -103,7 +108,7 @@ def shortest(start_str, finish_str, selection):
 
     # Создаём первые экземпляры с автоматическим высчитванием значений аттрибутов
     for i in start.destinations.items():
-        Vertex(i, graph, start)
+        Vertex(i, graph, start, selection)
 
     while True:
         # Находим ребро с минимальным весом
@@ -123,15 +128,18 @@ def shortest(start_str, finish_str, selection):
             # Если в Vertex.vertices не найдено таких вершин, то создаётся новый экземпляр класса. Значения аттрибутов плюсуются
             # к значениям, которые были у next_vertex
             if not somevar:
-                Vertex(i, graph, next_vertex)
+                Vertex(i, graph, next_vertex, selection)
 
              # если же такая вершина уже есть и она ещё не отмечена как посещённая, то сравниваем, какой вес меньше:
             # от старта через next_vertex до неё или прежнее "от старта через иную вершину"
             else:
                 if not somevar.visited:
-                    if next_vertex.value + i[1][0] < somevar.value:
+                    alternative_somevar = Vertex(i, graph, next_vertex, selection)
+                    if alternative_somevar.value < somevar.value:
                         Vertex.vertices.remove(somevar)
-                        Vertex(i, graph, next_vertex)
+                    else:
+                        Vertex.vertices.remove(alternative_somevar)
+                        # Vertex(i, graph, next_vertex, selection)
 
 
     Vertex.vertices.clear()
