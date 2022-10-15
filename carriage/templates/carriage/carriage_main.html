@@ -1,7 +1,92 @@
-{% extends 'base.html' %}
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<h1>SELECT VERTICES</h1>
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="modinatheme">
+    <!-- ======== Page title ============ -->
+    <title>Transland - Transport & Logistics HTML Template</title>
+    <!-- ========== Favicon Icon ========== -->
+    <link rel="shortcut icon" href="{% static 'carriage/img/favicon.png' %}">
+    <!-- ===========  All Stylesheet ================= -->
+    <!--  Icon css plugins -->
+    <link rel="stylesheet" href="{% static 'carriage/css/icons.css' %} ">
+    <!--  animate css plugins -->
+    <link rel="stylesheet" href="{% static 'carriage/css/animate.css' %}">
+    <!--  slick css plugins -->
+    <link rel="stylesheet" href="{% static 'carriage/css/slick.css' %}">
+    <!--  magnific-popup css plugins -->
+    <link rel="stylesheet" href="{% static 'carriage/css/magnific-popup.css' %}">
+    <!-- metis menu css file -->
+    <link rel="stylesheet" href="{% static 'carriage/css/metismenu.css' %}">
+    <!--  Bootstrap css plugins -->
+    <link rel="stylesheet" href="{% static 'carriage/css/bootstrap.min.css' %}">
+    <!--  main style css file -->
+    <link rel="stylesheet" href="{% static 'carriage/css/style.css' %}">
+    <!-- template main style css file -->
+    <link rel="stylesheet" href="{% static 'carriage/base_css/style.css' %}">
+
+</head>
+
+<body class="body-wrapper">
+    <!-- preloader -->
+
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner">
+            </div>
+                <div class="txt-loading">
+                    <span data-text-preloader="T" class="letters-loading">
+                        T
+                    </span>
+                    <span data-text-preloader="R" class="letters-loading">
+                        R
+                    </span>
+                    <span data-text-preloader="A" class="letters-loading">
+                       A
+                    </span>
+                    <span data-text-preloader="N" class="letters-loading">
+                        N
+                    </span>
+                    <span data-text-preloader="S" class="letters-loading">
+                        S
+                    </span>
+                    <span data-text-preloader="P" class="letters-loading">
+                        P
+                    </span>
+                    <span data-text-preloader="O" class="letters-loading">
+                        O
+                    </span>
+                    <span data-text-preloader="R" class="letters-loading">
+                        R
+                    </span>
+                    <span data-text-preloader="T" class="letters-loading">
+                        T
+                    </span>
+                </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <div>
     <p>
@@ -11,4 +96,21 @@
         </form>
     </p>
 </div>
-{% endblock %}
+
+<!--  ALl JS Plugins
+    ====================================== -->
+    <script src="{% static 'carriage/js/jquery.min.js' %}"></script>
+    <script src="{% static 'carriage/js/modernizr.min.js' %}"></script>
+    <script src="{% static 'carriage/js/jquery.easing.js' %}"></script>
+    <script src="{% static 'carriage/js/popper.min.js' %}"></script>
+    <script src="{% static 'carriage/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'carriage/js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'carriage/js/imageload.min.js' %}"></script>
+    <script src="{% static 'carriage/js/scrollUp.min.js' %}"></script>
+    <script src="{% static 'carriage/js/slick.min.js' %}"></script>
+    <script src="{% static 'carriage/js/slick-animation.min.js' %}"></script>
+    <script src="{% static 'carriage/js/magnific-popup.min.js' %}"></script>
+    <script src="{% static 'carriage/js/wow.min.js' %}"></script>
+    <script src="{% static 'carriage/js/metismenu.js' %}"></script>
+    <script src="{% static 'carriage/js/active.js' %}"></script>
+</body>

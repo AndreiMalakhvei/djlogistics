@@ -1,34 +1,199 @@
-{% load static %}
-<!doctype html>
+{%  load static %}
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="modinatheme">
+    <!-- ======== Page title ============ -->
+    <title>Transland - Transport & Logistics HTML Template</title>
+    <!-- ========== Favicon Icon ========== -->
+    <link rel="shortcut icon" href="{% static 'carriage/img/favicon.png' %}">
+    <!-- ===========  All Stylesheet ================= -->
+    <!--  Icon css plugins -->
+    <link rel="stylesheet" href="{% static 'carriage/css/icons.css' %} ">
+    <!--  animate css plugins -->
+    <link rel="stylesheet" href="{% static 'carriage/css/animate.css' %}">
+    <!--  slick css plugins -->
+    <link rel="stylesheet" href="{% static 'carriage/css/slick.css' %}">
+    <!--  magnific-popup css plugins -->
+    <link rel="stylesheet" href="{% static 'carriage/css/magnific-popup.css' %}">
+    <!-- metis menu css file -->
+    <link rel="stylesheet" href="{% static 'carriage/css/metismenu.css' %}">
+    <!--  Bootstrap css plugins -->
+    <link rel="stylesheet" href="{% static 'carriage/css/bootstrap.min.css' %}">
+    <!--  main style css file -->
     <link rel="stylesheet" href="{% static 'carriage/css/style.css' %}">
-      <style>
-          {% block style %}
-          {% endblock %}
-      </style>
+    <!-- template main style css file -->
+    <link rel="stylesheet" href="{% static 'carriage/base_css/style.css' %}">
 
-    <title>Logistics project</title>
+</head>
 
-  </head>
+<body class="body-wrapper">
+    <!-- preloader -->
 
-  <body>
-    <h1>Hello, world!</h1>
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner">
+            </div>
+                <div class="txt-loading">
+                    <span data-text-preloader="T" class="letters-loading">
+                        T
+                    </span>
+                    <span data-text-preloader="R" class="letters-loading">
+                        R
+                    </span>
+                    <span data-text-preloader="A" class="letters-loading">
+                       A
+                    </span>
+                    <span data-text-preloader="N" class="letters-loading">
+                        N
+                    </span>
+                    <span data-text-preloader="S" class="letters-loading">
+                        S
+                    </span>
+                    <span data-text-preloader="P" class="letters-loading">
+                        P
+                    </span>
+                    <span data-text-preloader="O" class="letters-loading">
+                        O
+                    </span>
+                    <span data-text-preloader="R" class="letters-loading">
+                        R
+                    </span>
+                    <span data-text-preloader="T" class="letters-loading">
+                        T
+                    </span>
+                </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-{% block content %}
+    <div class="top-bar-header">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-5 col-md-6 text-center text-md-start">
+                    <div class="top-welcome-text">
+                        <p>Tailored logistics for Your business</p>
+                    </div>
+                </div>
+                <div class="col-lg-5 mt-3 mt-md-0 col-md-6 text-center text-md-end d-flex justify-content-end align-items-center">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <div class="search-box">
+                        <form action="#">
+                            <input type="text" placeholder="Search">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-{% endblock %}
+
+    {% block extender %}
+    {%  endblock %}
+
+<section class="our-branch-wrapper section-padding pt-0">
+        <div class="container">
+            <div class="col-lg-8 offset-lg-2 text-center col-12">
+                <div class="section-title-2">
+                    <span>our branches</span>
+                    <h1>Contact Us</h1>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-4 offset-lg-4 col-md-6 col-12">
+                    <div class="single-branch-card">
+                        <div class="country-flag bg-cover" style="background-image: url(' {% static "carriage/img/flag-2.jpg" %} ')"></div>
+                        <div class="content">
+                            <h4>Canada, Saskatoon</h4>
+                            <p>24/7, Global Factory Street, 2nd Cross,
+                                San Fransisco 94112.</p>
+                            <p>+61 (625) 07520-6644 & 6655</p>
+                            <p><a href="#">support@example.com</a></p>
+                            <div class="branch-links">
+                                <a href="#">all branch <i class="fas fa-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="office-google-map-wrapper wow fadeInUp">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6678.7619084840835!2d144.9618311901502!3d-37.81450084255415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642b4758afc1d%3A0x3119cc820fdfc62e!2sEnvato!5e0!3m2!1sen!2sbd!4v1641984054261!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <footer class="footer-wrap footer-2 bg-cover text-white bg-overlay" style="background-image: url(' {% static "carriage/img/footer-bg.jpg" %} ')">
 
 
+        <div class="footer-bottom">
+            <div class="container align-items-center">
+                <div class="bottom-content-wrapper">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="copy-rights">
+                                <p>&copy;2022 <strong>Transland</strong>, All Rights Reserved</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-2 mt-md-0 col-12 text-md-end">
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-<!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-{#    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>#}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-  </body>
+    <!--  ALl JS Plugins
+    ====================================== -->
+    <script src="{% static 'carriage/js/jquery.min.js' %}"></script>
+    <script src="{% static 'carriage/js/modernizr.min.js' %}"></script>
+    <script src="{% static 'carriage/js/jquery.easing.js' %}"></script>
+    <script src="{% static 'carriage/js/popper.min.js' %}"></script>
+    <script src="{% static 'carriage/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'carriage/js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'carriage/js/imageload.min.js' %}"></script>
+    <script src="{% static 'carriage/js/scrollUp.min.js' %}"></script>
+    <script src="{% static 'carriage/js/slick.min.js' %}"></script>
+    <script src="{% static 'carriage/js/slick-animation.min.js' %}"></script>
+    <script src="{% static 'carriage/js/magnific-popup.min.js' %}"></script>
+    <script src="{% static 'carriage/js/wow.min.js' %}"></script>
+    <script src="{% static 'carriage/js/metismenu.js' %}"></script>
+    <script src="{% static 'carriage/js/active.js' %}"></script>
+</body>
+
 </html>
