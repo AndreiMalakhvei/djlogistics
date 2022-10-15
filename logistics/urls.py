@@ -23,7 +23,7 @@ from carriage import views
 urlpatterns = [
     path('carriage/', include('carriage.urls')),
     path('admin/', admin.site.urls),
-    path('', views.test),
+    path('', views.test, name='main'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
