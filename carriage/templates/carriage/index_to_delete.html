@@ -1,0 +1,22 @@
+{% extends 'base_to_delete.html' %}
+
+{% block content %}
+<h1>THIS IS A TEST STRING</h1>
+<div class="row">
+  <div class="col-md-3">
+      <h2>{{ country.name }}</h2>
+  </div>
+    <div class="col-md-3">
+      <img src="{{ country.flag_large.url }}" alt='' >
+    </div>
+    <div class="col-md-3">
+          <img src="{{ country.flag_medium.url }}" alt='' >
+        </div>
+    <div class="col-md-3">
+          <img src="{{ country.flag_small.url }}" alt='' >
+    </div>
+
+
+
+</div>
+{% endblock %}

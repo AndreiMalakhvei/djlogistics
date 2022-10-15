@@ -4,9 +4,8 @@ from carriage.routefinder import shortest
 from carriage.forms import TestForm
 
 
-def test(request):
-    country = Country.objects.get(pk=1)
-    return render(request, 'index-2.html')
+def start_page(request):
+    return render(request, 'carriage/index.html')
 
 
 def carriage_main(request):

@@ -20,10 +20,12 @@ from django.urls import path, include
 from logistics import settings
 from carriage import views
 
+
+
 urlpatterns = [
     path('carriage/', include('carriage.urls')),
     path('admin/', admin.site.urls),
-    path('', views.test, name='main'),
+    path('', views.start_page, name='start'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

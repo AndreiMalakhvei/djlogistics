@@ -1,116 +1,68 @@
+{% extends 'carriage/carriage_base.html' %}
 {%  load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <!-- ========== Meta Tags ========== -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="modinatheme">
-    <!-- ======== Page title ============ -->
-    <title>Transland - Transport & Logistics HTML Template</title>
-    <!-- ========== Favicon Icon ========== -->
-    <link rel="shortcut icon" href="{% static 'carriage/img/favicon.png' %}">
-    <!-- ===========  All Stylesheet ================= -->
-    <!--  Icon css plugins -->
-    <link rel="stylesheet" href="{% static 'carriage/css/icons.css' %} ">
-    <!--  animate css plugins -->
-    <link rel="stylesheet" href="{% static 'carriage/css/animate.css' %}">
-    <!--  slick css plugins -->
-    <link rel="stylesheet" href="{% static 'carriage/css/slick.css' %}">
-    <!--  magnific-popup css plugins -->
-    <link rel="stylesheet" href="{% static 'carriage/css/magnific-popup.css' %}">
-    <!-- metis menu css file -->
-    <link rel="stylesheet" href="{% static 'carriage/css/metismenu.css' %}">
-    <!--  Bootstrap css plugins -->
-    <link rel="stylesheet" href="{% static 'carriage/css/bootstrap.min.css' %}">
-    <!--  main style css file -->
-    <link rel="stylesheet" href="{% static 'carriage/css/style.css' %}">
-    <!-- template main style css file -->
-    <link rel="stylesheet" href="{% static 'carriage/base_css/style.css' %}">
+{%  block carriage_content %}
 
-</head>
-
-<body class="body-wrapper">
-    <!-- preloader -->
-
-    <div id="preloader" class="preloader">
-        <div class="animation-preloader">
-            <div class="spinner">
-            </div>
-                <div class="txt-loading">
-                    <span data-text-preloader="T" class="letters-loading">
-                        T
-                    </span>
-                    <span data-text-preloader="R" class="letters-loading">
-                        R
-                    </span>
-                    <span data-text-preloader="A" class="letters-loading">
-                       A
-                    </span>
-                    <span data-text-preloader="N" class="letters-loading">
-                        N
-                    </span>
-                    <span data-text-preloader="S" class="letters-loading">
-                        S
-                    </span>
-                    <span data-text-preloader="P" class="letters-loading">
-                        P
-                    </span>
-                    <span data-text-preloader="O" class="letters-loading">
-                        O
-                    </span>
-                    <span data-text-preloader="R" class="letters-loading">
-                        R
-                    </span>
-                    <span data-text-preloader="T" class="letters-loading">
-                        T
-                    </span>
-                </div>
-            <p class="text-center">Loading</p>
-        </div>
-        <div class="loader">
-            <div class="row">
-                <div class="col-3 loader-section section-left">
-                    <div class="bg"></div>
-                </div>
-                <div class="col-3 loader-section section-left">
-                    <div class="bg"></div>
-                </div>
-                <div class="col-3 loader-section section-right">
-                    <div class="bg"></div>
-                </div>
-                <div class="col-3 loader-section section-right">
-                    <div class="bg"></div>
-                </div>
+    <div class="page-banner-wrap text-center bg-cover" style="background-image: url('{% static "carriage/img/page-banner.jpg" %}')">
+        <div class="container">
+            <div class="page-heading text-white">
+                <h1>contact us</h1>
             </div>
         </div>
     </div>
 
-<div>
-    <p>
-        <form action="" method="post"> {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Старт">
-        </form>
-    </p>
-</div>
 
-<!--  ALl JS Plugins
-    ====================================== -->
-    <script src="{% static 'carriage/js/jquery.min.js' %}"></script>
-    <script src="{% static 'carriage/js/modernizr.min.js' %}"></script>
-    <script src="{% static 'carriage/js/jquery.easing.js' %}"></script>
-    <script src="{% static 'carriage/js/popper.min.js' %}"></script>
-    <script src="{% static 'carriage/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'carriage/js/isotope.pkgd.min.js' %}"></script>
-    <script src="{% static 'carriage/js/imageload.min.js' %}"></script>
-    <script src="{% static 'carriage/js/scrollUp.min.js' %}"></script>
-    <script src="{% static 'carriage/js/slick.min.js' %}"></script>
-    <script src="{% static 'carriage/js/slick-animation.min.js' %}"></script>
-    <script src="{% static 'carriage/js/magnific-popup.min.js' %}"></script>
-    <script src="{% static 'carriage/js/wow.min.js' %}"></script>
-    <script src="{% static 'carriage/js/metismenu.js' %}"></script>
-    <script src="{% static 'carriage/js/active.js' %}"></script>
-</body>
+    <section class="contact-page-wrap section-padding">
+        <div class="container">
+
+            <div class="row pt-5">
+                <div class="block-contents mb-30 pt-60">
+                    <div class="section-title text-center">
+                        <h5 class="text-center">quotation</h5>
+                        <span>fill in the form</span>
+                        <h2>get price offer <span> for every route</span></h2>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-12">
+                    <div class="contact-form">                                                        
+                        <form action="mail.php" class="row" id="contact-form">
+                            <div class="col-md-6 col-12">
+                                <div class="single-personal-info">
+                                    <label for="fname">Full Name</label>
+                                    <input type="text" id="fname" placeholder="Enter Name" >                                         
+                                </div>
+                            </div>                            
+                            <div class="col-md-6 col-12">
+                                <div class="single-personal-info">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" placeholder="Enter Email Address" >                                         
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="single-personal-info">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="text" id="phone" placeholder="Enter Number">                                         
+                                </div>
+                            </div>                                      
+                            <div class="col-md-6 col-12">
+                                <div class="single-personal-info">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" placeholder="Enter Subject">                                         
+                                </div>
+                            </div>                                      
+                            <div class="col-md-12 col-12">
+                                <div class="single-personal-info">
+                                    <label for="message">Enter Message</label>
+                                    <textarea id="message" placeholder="Enter message"></textarea>                                        
+                                </div>
+                            </div>                                      
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ {% endblock %}
