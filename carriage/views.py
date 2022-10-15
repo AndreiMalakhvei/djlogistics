@@ -3,6 +3,8 @@ from carriage.models import Test, Country
 from carriage.routefinder import shortest
 from carriage.forms import TestForm
 
+def test(request):
+    return render(request, 'index-2.html')
 
 def start_page(request):
     return render(request, 'carriage/index.html')
