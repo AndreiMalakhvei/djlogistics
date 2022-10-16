@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from carriage.models import Test, Country
+from carriage.models import Test, Country, City
 from carriage.routefinder import shortest
 from carriage.forms import TestForm
 
 def test(request):
-    return render(request, 'index-2.html')
+    form = TestForm()
+    return render(request, 'carriage/test.html', {'form': form})
 
 def start_page(request):
     return render(request, 'carriage/index.html')

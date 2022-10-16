@@ -1,0 +1,15 @@
+input[type=text] {
+  border: 2px solid red;
+  border-radius: 4px;
+  background-color: lightblue;
+}
+
+.custom {
+  border: 2px solid red;
+  border-radius: 4px;
+  background-color: lightblue;
+}
+
+select {
+  border: 2px solid red;
+}

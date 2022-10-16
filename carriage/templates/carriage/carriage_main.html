@@ -6,7 +6,7 @@
     <div class="page-banner-wrap text-center bg-cover" style="background-image: url('{% static "carriage/img/page-banner.jpg" %}')">
         <div class="container">
             <div class="page-heading text-white">
-                <h1>contact us</h1>
+                <h1>Get our price offer</h1>
             </div>
         </div>
     </div>
@@ -25,40 +25,39 @@
                 </div>
 
                 <div class="col-12 col-lg-12">
-                    <div class="contact-form">                                                        
-                        <form action="mail.php" class="row" id="contact-form">
-                            <div class="col-md-6 col-12">
-                                <div class="single-personal-info">
-                                    <label for="fname">Full Name</label>
-                                    <input type="text" id="fname" placeholder="Enter Name" >                                         
-                                </div>
-                            </div>                            
-                            <div class="col-md-6 col-12">
-                                <div class="single-personal-info">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" placeholder="Enter Email Address" >                                         
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="single-personal-info">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="text" id="phone" placeholder="Enter Number">                                         
-                                </div>
-                            </div>                                      
-                            <div class="col-md-6 col-12">
-                                <div class="single-personal-info">
-                                    <label for="subject">Subject</label>
-                                    <input type="text" id="subject" placeholder="Enter Subject">                                         
-                                </div>
-                            </div>                                      
-                            <div class="col-md-12 col-12">
-                                <div class="single-personal-info">
-                                    <label for="message">Enter Message</label>
-                                    <textarea id="message" placeholder="Enter message"></textarea>                                        
-                                </div>
-                            </div>                                      
+                    <div class="row">
+                        <div class="col-md-8 offset-lg-2">
 
+                        <form action=""  id="contact-form">
+                            {% csrf_token %}
+                            <div class="single-personal-info">
+                            {{ form.as_div }}
+                            </div>
+
+
+
+
+{##}
+{#                            <div class="col-md-6 col-12">#}
+{#                                <div class="single-personal-info">#}
+{#                                    <label for="from_city">City of Departure</label>#}
+{#                                    <input type="text" id="from_city" placeholder="" >#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <div class="col-md-6 col-12">#}
+{#                                <div class="single-personal-info">#}
+{#                                    <label for="to_city">City of Destination</label>#}
+{#                                    <input type="text" id="to_city" placeholder="" >#}
+{#                                </div>#}
+{#                            </div>#}
+
+{#                            <div class="col-md-12 col-12 text-center">#}
+{#                                <input class="submit-btn" type="submit" value="Get A Quote">#}
+{#                            </div>#}
                         </form>
+
+
                     </div>
                 </div>
             </div>
