@@ -28,11 +28,11 @@
                     <div class="row">
                         <div class="col-md-8 offset-lg-2">
 
-                        <form action=""  id="contact-form">
+                        <form action=""  method="post">
                             {% csrf_token %}
-                            <div class="single-personal-info">
+
                             {{ form.as_div }}
-                            </div>
+
 
 
 
@@ -52,9 +52,9 @@
 {#                                </div>#}
 {#                            </div>#}
 
-{#                            <div class="col-md-12 col-12 text-center">#}
-{#                                <input class="submit-btn" type="submit" value="Get A Quote">#}
-{#                            </div>#}
+                            <div class="col-md-12 col-12 text-center">
+                                <input class="submit-btn" type="submit" value="Get A Quote">
+                            </div>
                         </form>
 
 

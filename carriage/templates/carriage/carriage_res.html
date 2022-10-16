@@ -1,0 +1,36 @@
+{% extends 'carriage/carriage_base.html' %}
+{%  load static %}
+
+{%  block carriage_content %}
+
+    <div class="page-banner-wrap text-center bg-cover" style="background-image: url('{% static "carriage/img/page-banner.jpg" %}')">
+        <div class="container">
+            <div class="page-heading text-white">
+                <h1>Get our price offer</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="contact-page-wrap section-padding">
+        <div class="container">
+
+
+            <p>Город отправления {{ res.start }} </p>
+            <p>Город назначения {{ res.name }} </p>
+            <p>Дистанция {{ res.distance }} </p>
+            <p>Транзитное время {{ res.time }} </p>
+            <p>Цена {{ res.price }} </p>
+            <p>Детализация {{ res.log }} </p>
+
+            <p>Value {{ res.value }} </p>
+
+
+
+
+
+
+        </div>
+    </section>
+
+ {% endblock %}
