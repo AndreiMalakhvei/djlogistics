@@ -1,6 +1,11 @@
 {% extends 'carriage/carriage_base.html' %}
 {%  load static %}
 
+{% block styles %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'carriage/base_css/mycss.css' %}">
+{%  endblock %}
+
 {%  block carriage_content %}
 
     <div class="page-banner-wrap text-center bg-cover" style="background-image: url('{% static "carriage/img/home2/request.jpg" %}')">
@@ -24,42 +29,51 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-12">
-                    <div class="row">
-                        <div class="col-md-8 offset-lg-2">
 
-                        <form action=""  method="post">
+
+                <div class="col-12 col-lg-12">
+
+                    <div class="contact-form">
+                        {%  if form.non_field_errors %}
+                        <h6>{{ form.non_field_errors }}</h6>
+                        {% endif %}
+                        <form action="" class="row" id="contact-form" method="post">
                             {% csrf_token %}
 
-                            {{ form.as_div }}
 
-
-
-
-
-{##}
+                            <div class="col-md-6 col-12">
+                                <div class="single-personal-info">
+                                    {{ form.from_city }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="single-personal-info">
+                                    {{ form.to_city }}
+                                </div>
+                            </div>
 {#                            <div class="col-md-6 col-12">#}
 {#                                <div class="single-personal-info">#}
-{#                                    <label for="from_city">City of Departure</label>#}
-{#                                    <input type="text" id="from_city" placeholder="" >#}
+{#                                    {{ form.to_city }}#}
 {#                                </div>#}
 {#                            </div>#}
-{##}
 {#                            <div class="col-md-6 col-12">#}
 {#                                <div class="single-personal-info">#}
-{#                                    <label for="to_city">City of Destination</label>#}
-{#                                    <input type="text" id="to_city" placeholder="" >#}
+{#                                    {{ form.from_city }}#}
 {#                                </div>#}
 {#                            </div>#}
-
+                            <div class="col-md-12 col-12">
+                                <div class="single-personal-info">
+                                    {{ form.selection }}
+                                </div>
+                            </div>
+{#                            {% endfor %}#}
                             <div class="col-md-12 col-12 text-center">
                                 <input class="submit-btn" type="submit" value="Get A Quote">
                             </div>
                         </form>
-
-
                     </div>
                 </div>
+
             </div>
         </div>
     </section>

@@ -16,6 +16,8 @@ def carriage_main(request):
             selection = form.cleaned_data['selection']
             res = shortest(first, finish, selection)
             return render(request, 'carriage/carriage_res.html', {'res': res})
+        else:
+            return render(request, 'carriage/carriage_main.html', {'form': form})
     form = RouteFindForm()
     return render(request, 'carriage/carriage_main.html', {'form': form})
 

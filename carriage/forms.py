@@ -3,41 +3,41 @@ from django.core.exceptions import ValidationError
 
 from carriage.models import City
 
-class MyTextInput(forms.TextInput):
-    class Media:
-        css = {
-            'all': ('carriage/base_css/mycss.css',)
-        }
-
-
-
 class RouteFindForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # add custom error messages
+        self.fields['to_city'].error_messages.update({
+            'required': 'Please let us know what to call you!',
+        })
+
+
     form_qs = City.objects.select_related().order_by('country__name', 'name')
     list_of_cities = [(i.name, ", ".join((str(i.country.name), str(i.name)))) for i in form_qs]
 
     # test_field = forms.CharField(widget=MyTextInput)
     from_city = forms.ChoiceField(label='from city', choices=list_of_cities,
-                                 widget=forms.Select(attrs={'class': "form-select form-select-lg mb-3 custom"}))
+                                 widget=forms.Select(attrs={'class': "form-select form-select-lg mb-3 "}))
     to_city = forms.ChoiceField(label='to city', choices=list_of_cities,
                                      widget=forms.Select(attrs={'class': "form-select form-select-lg mb-3"}))
-    selection_list = [(1, 'Time'), (2, 'Price')]
-    selection = forms.ChoiceField(widget=forms.RadioSelect(attrs={'class': 'form-check-input', 'type': 'radio', 'name': 'flexRadioDefault',
-                                                                  'id': 'flexCheckDefault'}), label='Priority',
-                                  choices=selection_list)
+    selection_list = [(1, 'Time as Priority'), (2, 'Price as Priority')]
+    selection = forms.ChoiceField(widget=forms.RadioSelect(), label='Priority',  choices=selection_list)
+    error_messages = {
+        'to_city': {
+            'required': "This writer's name is too long."
+        }}
 
-    # def clean(self):
-    #     cleaned_data = super().clean()
-    #     to_city = cleaned_data.get("to_city")
-    #     from_city = cleaned_data.get("from_city")
-    #
-    #     if to_city == from_city:
-    #         # msg = "Cities of departure and destination must be different"
-    #         # self.add_error('to_city', msg)
-    #         # self.add_error('from_city', msg)
-    #         raise ValidationError(
-    #             "Cities of departure and destination must be different "
-    #             "CC'ing yourself."
-    #         )
+    def clean(self):
+        cleaned_data = super().clean()
+        to_city = cleaned_data.get("to_city")
+        from_city = cleaned_data.get("from_city")
+
+        if to_city == from_city:
+            raise to_city.error_messages['required']
+            # raise ValidationError(
+            #     "Cities of departure and destination must be different "
+            # )
 
 
 class TestDisplayForm(forms.Form):

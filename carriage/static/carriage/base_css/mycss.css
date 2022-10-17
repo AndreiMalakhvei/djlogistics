@@ -10,6 +10,16 @@ input[type=text] {
   background-color: lightblue;
 }
 
-select {
-  border: 2px solid red;
+/*select {*/
+/*  border: 2px solid red;*/
+/*}*/
+
+h6 > ul > li {
+  color: red;
+  /*text-decoration-line: underline;*/
 }
+
+/*h6 {*/
+/*  color: red;*/
+/*  text-decoration-line: underline;*/
+/*}*/
