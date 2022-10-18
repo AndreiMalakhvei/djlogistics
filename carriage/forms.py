@@ -23,10 +23,10 @@ class RouteFindForm(forms.Form):
                                      widget=forms.Select(attrs={'class': "form-select form-select-lg mb-3"}))
     selection_list = [(1, 'Time as Priority'), (2, 'Price as Priority')]
     selection = forms.ChoiceField(widget=forms.RadioSelect(), label='Priority',  choices=selection_list)
-    error_messages = {
-        'to_city': {
-            'required': "This writer's name is too long."
-        }}
+    # error_messages = {
+    #     'to_city': {
+    #         'required': "This writer's name is too long."
+    #     }}
 
     def clean(self):
         cleaned_data = super().clean()
@@ -34,10 +34,13 @@ class RouteFindForm(forms.Form):
         from_city = cleaned_data.get("from_city")
 
         if to_city == from_city:
-            raise to_city.error_messages['required']
-            # raise ValidationError(
-            #     "Cities of departure and destination must be different "
-            # )
+            # raise RouteFindForm.error_messages['to_city']
+            # raise forms.ValidationError('ijbnrisgnngirnbignbihr')
+            # raise RouteFindForm.to_city.error_messages['required']
+
+            raise ValidationError(
+                "Cities of departure and destination must be different "
+            )
 
 
 class TestDisplayForm(forms.Form):

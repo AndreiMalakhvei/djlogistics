@@ -1,6 +1,7 @@
 from django.db import models
 
 class Test(models.Model):
+    """ This is test description"""
     image = models.ImageField(upload_to='img/')
 
 
