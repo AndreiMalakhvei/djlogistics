@@ -28,3 +28,11 @@ def contacts(request):
 
 def warehouse(request):
     return render(request, 'carriage/warehouse.html')
+
+def transport(request):
+    context = dict()
+    return render(request, 'carriage/transport.html', {'context': context})
+
+def news(request):
+    context = dict()
+    return render(request, 'carriage/news.html', {'context': context})

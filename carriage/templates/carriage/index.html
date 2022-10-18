@@ -62,7 +62,6 @@
                                 <nav class="sidebar-nav">
                                     <ul class="metismenu" id="mobile-menu">
                                         <li><a class="has-arrow" href="{% url 'start' %}">About</a>
-
                                         </li>
                                         <li><a href="{% url 'carriage:carriage_main' %}">Make request</a></li>
 
@@ -75,7 +74,10 @@
                                             </ul>
                                         </li>
 
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a class="has-arrow" href="{% url 'carriage:news' %}">News</a>
+                                        </li>
+
+                                        <li><a href="{% url 'carriage:contacts' %}">Contact</a></li>
                                     </ul>
                                 </nav>
     
@@ -140,6 +142,9 @@
                                 <li><a href="team.html">Germany</a></li>
                             </ul>
                         </li>
+
+                        <li><a class="has-arrow" href="{% url 'carriage:news' %}">News</a>
+                                        </li>
 
                         <li><a href="{% url 'carriage:contacts' %}">Contact</a></li>
                     </ul>
@@ -224,11 +229,11 @@
                                     <i class="flaticon-truck-2"></i>
                                 </div>
                                 <div class="title">
-                                    <h6><a href="services-details.html">road freight</a></h6>
+                                    <h6><a href="{%  url 'carriage:transport' %}">road freight</a></h6>
 
                                 </div>
                             </div>
-                            <a href="services-details.html" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
+                            <a href="{%  url 'carriage:transport' %}" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12 border-right col-md-4 col-xl-2">

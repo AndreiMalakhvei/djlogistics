@@ -1,0 +1,81 @@
+
+{% extends 'carriage/carriage_base.html' %}
+{%  load static %}
+
+{%  block carriage_content %}
+
+
+    <div class="page-banner-wrap text-center bg-cover" style="background-image: url('{% static 'carriage/img/home2/news.jpg'%}')">
+        <div class="container">
+            <div class="page-heading text-white">
+                <h1>News</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="blog-wrapper news-wrapper section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="blog-posts">
+
+                        <div class="single-blog-post">
+                            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/blog/p1.jpg')"></div>
+                            <div class="post-content">
+
+                                <h2><a href="news-details.html">Helping Companies in Their Green Transition</a></h2>
+                                <div class="post-meta">
+
+                                    <span><i class="fal fa-calendar-alt"></i>24th March 2021</span>
+                                </div>
+                                <p>With the cargo business blasting, financier firms are bouncing from organization to organization quickly, prompting high paces of turnover. Regularly, agents are beginning the work with the...</p>
+                                <div class="d-flex justify-content-between align-items-center mt-30">
+
+                                    <div class="post-link">
+                                        <a href="news-details.html"><i class="fal fa-arrow-right"></i> Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="page-nav-wrap mt-60 text-center">
+                        <ul>
+                            <li><a class="page-numbers" href="#"><i class="fal fa-long-arrow-left"></i></a></li>
+                            <li><a class="page-numbers" href="#">01</a></li>
+                            <li><a class="page-numbers" href="#">02</a></li>
+                            <li><a class="page-numbers" href="#">..</a></li>
+                            <li><a class="page-numbers" href="#">10</a></li>
+                            <li><a class="page-numbers" href="#">11</a></li>
+                            <li><a class="page-numbers" href="#"><i class="fal fa-long-arrow-right"></i></a></li>
+                        </ul>
+                    </div> <!-- /.col-12 col-lg-12 --> 
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="main-sidebar">
+                        <div class="single-sidebar-widget">
+                            <div class="wid-title">
+                                <h3>Search</h3>
+                            </div>
+                            <div class="search_widget">
+                                <form action="#">
+                                    <input type="text" placeholder="Search your keyword...">
+                                    <button type="submit"><i class="fal fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {%  endblock %}
