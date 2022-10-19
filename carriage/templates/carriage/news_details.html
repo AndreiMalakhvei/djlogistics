@@ -1,0 +1,75 @@
+
+{% extends 'carriage/carriage_base.html' %}
+{%  load static %}
+
+{%  block carriage_content %}
+
+
+    <div class="page-banner-wrap text-center bg-cover" style="background-image: url('{% static 'carriage/img/home2/news.jpg'%}')">
+        <div class="container">
+            <div class="page-heading text-white">
+                <h1>News</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="blog-wrapper news-wrapper section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="blog-posts">
+
+
+
+                        <div class="single-blog-post">
+                            <div class="post-featured-thumb bg-cover" style="background-image: url('{{ article.news_image.url }}')"></div>
+
+
+
+
+                            <div class="post-content">
+
+                                <h2><a href="{%  url 'carriage:news_detail' pk=article.pk  %}">{{ article.title }}</a></h2>
+                                <div class="post-meta">
+
+                                    <span><i class="fal fa-calendar-alt"></i>{{ article.date_of_news }}</span>
+                                </div>
+                                <p>{{ article.body }}</p>
+                                <div class="d-flex justify-content-between align-items-center mt-30">
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="main-sidebar">
+                        <div class="single-sidebar-widget">
+                            <div class="wid-title">
+                                <h3>Search</h3>
+                            </div>
+                            <div class="search_widget">
+                                <form action="#">
+                                    <input type="text" placeholder="Search your keyword...">
+                                    <button type="submit"><i class="fal fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {%  endblock %}

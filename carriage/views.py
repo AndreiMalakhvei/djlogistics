@@ -4,7 +4,7 @@ from carriage.routefinder import shortest
 from carriage.forms import RouteFindForm
 
 site_content_variable = SiteContentData.objects.all()
-all_news = News.objects.all()
+all_news = News.objects.all().order_by('-date_of_news')
 
 def start_page(request):
     return render(request, 'carriage/index.html')
@@ -43,4 +43,4 @@ def transport(request, pk):
 
 def news_detail(request, pk):
     article = all_news.get(pk=pk)
-    return render(request, 'carriage/news-details.html', {'article': article })
+    return render(request, 'carriage/news_details.html', {'article': article})
