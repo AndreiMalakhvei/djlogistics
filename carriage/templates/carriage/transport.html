@@ -18,18 +18,13 @@
                 <div class="col-xl-9 col-12 pe-xl-5">
                     <div class="service-details-contents">
                         <div class="service-feature-img">
-                            <img src="assets/img/services/b1.jpg" alt="">
+                            <img src="{{ mode.site_image.url }}" alt="">
                         </div>
                         <div class="contents">
-                            <h2>Road Transport</h2>
-                            <p>With 50 branches situated in the U.S., Canada and Mexico, Transland's property transport items and administrations furnish a ground cargo sending network with inventive, assisted start to finish inventory network arrangements associating the U.S., <a href="#">North America</a> and the world. As a non-resource based organization, we give your business the broad and high thickness network it needs. Our ISO endorsed transporters and specialist organizations guarantee fast and dependable conveyance to all significant objections across the landmass. Get the contact you need to remain in front of the opposition with our scope of value land transport arrangements.</p>
-
-                            <p>Whether you need door-to-door forwarding services by road, rail, or both, our land shipping solutions will get your shipments from everywhere to anywhere in North America.</p>
+                            <h2>{{ mode.short_descr}}</h2>
+                            <p>{{ mode.main_content}}</p>
 
 
-                            <h3>Going Beyond the Usual</h3>
-                            <p>Crestfish stingray lenok leatherjacket Mexican golden trout cobia. Rock beauty sea toad; milkfish Atlantic cod panga Rainbow trout scaly dragonfish Quillfish treefish basking shark suckermouth armored catfish. Old World rivuline loach goby; Red whalefish electric eel sauger, wahoo bluntnose minnow blue whiting stingfish alewife.</p>
-                            
 
                         </div>
                     </div>
@@ -38,14 +33,14 @@
                     <div class="service-sidebar-wrapper">
                         <div class="single-sidebar-widgets">
                             <div class="wid-title">
-                                <h3>Logistics Services</h3>
+                                <h3>Modes of transport</h3>
                             </div>
                             <div class="services-category-link">
-                                <a href="services-details.html">road Transport</a>
-                                <a href="services-details.html">Ocean Transport</a>
-                                <a href="services-details.html">air Transport</a>
-                                <a href="services-details.html">rail Transport</a>
-                                <a href="services-details.html">drone Transport</a>
+                                {% for var in content_vars %}
+                                <a href="{%  url 'carriage:transport' pk=var.pk  %}">{{ var.short_descr }}</a>
+
+                                {%  endfor %}
+
                             </div>
                         </div>
 

@@ -20,26 +20,28 @@
                 <div class="col-12 col-lg-8">
                     <div class="blog-posts">
 
+                        {% for article in news %}
+
                         <div class="single-blog-post">
-                            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/blog/p1.jpg')"></div>
+                            <div class="post-featured-thumb bg-cover" style="background-image: url('{{ article.news_image.url }}')"></div>
                             <div class="post-content">
 
-                                <h2><a href="news-details.html">Helping Companies in Their Green Transition</a></h2>
+                                <h2><a href="{%  url 'carriage:news_detail' pk=article.pk  %}">{{ article.title }}</a></h2>
                                 <div class="post-meta">
 
-                                    <span><i class="fal fa-calendar-alt"></i>24th March 2021</span>
+                                    <span><i class="fal fa-calendar-alt"></i>{{ article.date_of_news }}</span>
                                 </div>
-                                <p>With the cargo business blasting, financier firms are bouncing from organization to organization quickly, prompting high paces of turnover. Regularly, agents are beginning the work with the...</p>
+                                <p>{{ article.body|truncatechars:100 }}</p>
                                 <div class="d-flex justify-content-between align-items-center mt-30">
 
                                     <div class="post-link">
-                                        <a href="news-details.html"><i class="fal fa-arrow-right"></i> Read More</a>
+                                        <a href="{%  url 'carriage:news_detail' pk=article.pk  %}"><i class="fal fa-arrow-right"></i> Read More</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-
+                        {% endfor %}
 
 
                     </div>

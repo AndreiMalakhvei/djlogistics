@@ -94,4 +94,27 @@ class BorderCrossing(models.Model):
     add_price = models.IntegerField(null=False, verbose_name='Costs for border-crossing', default=1)
 
 
-list_of_models = [CustTerritory, Country, City, Coefficient, Distance, BorderCrossing]
+class SiteContentData(models.Model):
+    short_descr = models.CharField(max_length=20, verbose_name='Title description',
+                                      null=False)
+    main_content = models.TextField(verbose_name='content')
+    site_image = models.ImageField(upload_to='img/sitecontent')
+    class Meta:
+        verbose_name = 'Site content'
+        verbose_name_plural = 'Site content'
+
+
+
+class News(models.Model):
+    title = models.CharField(max_length=100, verbose_name='Title')
+    body = models.TextField(verbose_name='News content')
+    news_image = models.ImageField(upload_to='img/news')
+    date_of_news = models.DateField(verbose_name='Date', default='2022-01-01')
+    class Meta:
+        verbose_name = 'News'
+        verbose_name_plural = 'News'
+
+
+
+
+list_of_models = [CustTerritory, Country, City, Coefficient, Distance, BorderCrossing, SiteContentData, News]

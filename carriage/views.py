@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from carriage.models import Test, Country, City
+from carriage.models import Test, Country, City, SiteContentData, News
 from carriage.routefinder import shortest
 from carriage.forms import RouteFindForm
+
+site_content_variable = SiteContentData.objects.all()
+all_news = News.objects.all()
 
 def start_page(request):
     return render(request, 'carriage/index.html')
@@ -29,10 +32,15 @@ def contacts(request):
 def warehouse(request):
     return render(request, 'carriage/warehouse.html')
 
-def transport(request):
-    context = dict()
-    return render(request, 'carriage/transport.html', {'context': context})
+
 
 def news(request):
-    context = dict()
-    return render(request, 'carriage/news.html', {'context': context})
+    return render(request, 'carriage/news.html', {'news': all_news})
+
+def transport(request, pk):
+    mode = site_content_variable.get(pk=pk)
+    return render(request, 'carriage/transport.html', {'mode': mode, 'content_vars': site_content_variable})
+
+def news_detail(request, pk):
+    article = all_news.get(pk=pk)
+    return render(request, 'carriage/news-details.html', {'article': article })

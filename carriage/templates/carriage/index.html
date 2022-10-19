@@ -229,11 +229,11 @@
                                     <i class="flaticon-truck-2"></i>
                                 </div>
                                 <div class="title">
-                                    <h6><a href="{%  url 'carriage:transport' %}">road freight</a></h6>
+                                    <h6><a href="{%  url 'carriage:transport' pk=1  %}">road freight</a></h6>
 
                                 </div>
                             </div>
-                            <a href="{%  url 'carriage:transport' %}" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
+                            <a href="{%  url 'carriage:transport' pk=1 %}" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12 border-right col-md-4 col-xl-2">
@@ -243,10 +243,10 @@
                                     <i class="flaticon-airplane-5"></i>
                                 </div>
                                 <div class="title">
-                                    <h6><a href="services-details.html">air freight</a></h6>
+                                    <h6><a href="{%  url 'carriage:transport' pk=2  %}">air freight</a></h6>
                                 </div>
                             </div>
-                            <a href="services-details.html" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
+                            <a href="{%  url 'carriage:transport' pk=2  %}" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12 border-right col-md-4 col-xl-2">
@@ -256,10 +256,10 @@
                                     <i class="flaticon-cargo-boat"></i>
                                 </div>
                                 <div class="title">
-                                    <h6><a href="services-details.html">ocean freight</a></h6>
+                                    <h6><a href="{%  url 'carriage:transport' pk=3  %}">ocean freight</a></h6>
                                 </div>
                             </div>
-                            <a href="services-details.html" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
+                            <a href="{%  url 'carriage:transport' pk=3  %}" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12 border-right col-md-4 col-xl-2">
@@ -269,10 +269,10 @@
                                     <i class="flaticon-subway"></i>
                                 </div>
                                 <div class="title">
-                                    <h6><a href="services-details.html">train freight</a></h6>
+                                    <h6><a href="{%  url 'carriage:transport' pk=4  %}">train freight</a></h6>
                                 </div>
                             </div>
-                            <a href="services-details.html" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
+                            <a href="{%  url 'carriage:transport' pk=4  %}" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12 border-right col-md-4 col-xl-2">
@@ -282,10 +282,10 @@
                                     <i class="flaticon-warehouse"></i>
                                 </div>
                                 <div class="title">
-                                    <h6><a href="services-details.html">warehousing</a></h6>
+                                    <h6><a href="{% url 'carriage:warehouse' %}">warehousing</a></h6>
                                 </div>
                             </div>
-                            <a href="services-details.html" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
+                            <a href="{% url 'carriage:warehouse' %}" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12 border-right col-md-4 col-xl-2">
@@ -296,10 +296,10 @@
                                     <i class="flaticon-worldwide"></i>
                                 </div>
                                 <div class="title">
-                                    <h6><a href="services-details.html">consulting</a></h6>
+                                    <h6><a href="{% url 'carriage:contacts' %}">consulting</a></h6>
                                 </div>
                             </div>
-                            <a href="services-details.html" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
+                            <a href="{% url 'carriage:contacts' %}" class="service-link"><i class="fal fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
