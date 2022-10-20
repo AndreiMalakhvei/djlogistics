@@ -109,8 +109,8 @@
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
                     <div class="search-box">
-                        <form action="#">
-                            <input type="text" placeholder="Search">
+                        <form action="{% url 'carriage:search' %}">
+                            <input type="text" name="search" placeholder="Search">
                             <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>

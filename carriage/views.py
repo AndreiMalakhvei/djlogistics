@@ -1,13 +1,24 @@
+from django.db.models import Q
 from django.shortcuts import render
-from carriage.models import Test, Country, City, SiteContentData, News
+from carriage.models import Test, Country, City, SiteContentData, News, Warehouse
 from carriage.routefinder import shortest
 from carriage.forms import RouteFindForm
 
 site_content_variable = SiteContentData.objects.all()
 all_news = News.objects.all().order_by('-date_of_news')
+all_warehouses = Warehouse.objects.all()
+
+def search(request):
+    text = request.GET.get('search')
+    if text:
+        articles = all_news.filter(Q(title__contains=text) | Q(body__contains=text))
+    else:
+        articles = all_news.none()
+    return render(request, 'carriage/search.html', {'news': articles})
+
 
 def start_page(request):
-    return render(request, 'carriage/index.html')
+    return render(request, 'carriage/index.html', {'warehouses': all_warehouses})
 
 
 def carriage_main(request):
@@ -33,13 +44,19 @@ def warehouse(request):
     return render(request, 'carriage/warehouse.html')
 
 
+def warehouse_detail(request, pk):
+    article = all_news.get(pk=pk)
+    return render(request, 'carriage/news_details.html', {'article': article})
+
 
 def news(request):
     return render(request, 'carriage/news.html', {'news': all_news})
 
+
 def transport(request, pk):
     mode = site_content_variable.get(pk=pk)
     return render(request, 'carriage/transport.html', {'mode': mode, 'content_vars': site_content_variable})
+
 
 def news_detail(request, pk):
     article = all_news.get(pk=pk)

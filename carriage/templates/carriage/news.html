@@ -65,8 +65,8 @@
                                 <h3>Search</h3>
                             </div>
                             <div class="search_widget">
-                                <form action="#">
-                                    <input type="text" placeholder="Search your keyword...">
+                                <form action="{% url 'carriage:search' %}">
+                                    <input type="text" name="search" placeholder="Search your keyword...">
                                     <button type="submit"><i class="fal fa-search"></i></button>
                                 </form>
                             </div>

@@ -92,17 +92,25 @@ class BorderCrossing(models.Model):
                                             verbose_name='Customs territory of destination')
     approx_time = models.IntegerField(null=False, verbose_name='Approximated time to cross the border')
     add_price = models.IntegerField(null=False, verbose_name='Costs for border-crossing', default=1)
+    class Meta:
+        verbose_name = 'Border Crossinge'
+        verbose_name_plural = 'Border Crossings'
+        unique_together = ['from_cust_territory', 'to_cust_territory']
+
+    def __str__(self):
+        return str(f'from {self.from_cust_territory} to {self.to_cust_territory}')
 
 
 class SiteContentData(models.Model):
-    short_descr = models.CharField(max_length=20, verbose_name='Title description',
-                                      null=False)
+    short_descr = models.CharField(max_length=20, verbose_name='Title description', null=False)
     main_content = models.TextField(verbose_name='content')
     site_image = models.ImageField(upload_to='img/sitecontent')
     class Meta:
         verbose_name = 'Site content'
         verbose_name_plural = 'Site content'
 
+    def __str__(self):
+        return str(self.short_descr)
 
 
 class News(models.Model):
@@ -111,10 +119,34 @@ class News(models.Model):
     news_image = models.ImageField(upload_to='img/news')
     date_of_news = models.DateField(verbose_name='Date', default='2022-01-01')
     class Meta:
-        verbose_name = 'News'
+        verbose_name = 'News Article'
         verbose_name_plural = 'News'
 
+    def __str__(self):
+        return str(self.title[:20])
+
+class Warehouse(models.Model):
+    name = models.CharField(null=False, max_length=20, verbose_name='Name')
+    city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='City', related_name='warehouse_city')
+    address = models.CharField(null=False, max_length=50, verbose_name='Address')
+    bonded = models.BooleanField(verbose_name='Bonded warehouse', default=False)
+    capacity = models.IntegerField(null=False, verbose_name='Capacity')
+    loading = models.FloatField(null=False, verbose_name='Loading/unloading per 1 pallet')
+    labeling = models.FloatField(null=False, verbose_name='Labeling per 1 pallet')
+    storage = models.FloatField(null=False, verbose_name='Storage per 1 pallet')
+    ex = models.FloatField(null=False, verbose_name='Export declaration')
+    codes_add = models.FloatField(null=True, verbose_name='Additional codes declaration')
+    manifest = models.IntegerField(null=True, blank=True, verbose_name='Applying for cargo manifest')
+    customs_coeff = models.FloatField(null=True, blank=True, verbose_name='Coefficient for transit goods` handling')
+    warehouse_image = models.ImageField(upload_to='img/warehouses')
+    class Meta:
+        verbose_name = 'Warehouse'
+        verbose_name_plural = 'Warehouses'
+
+    def __str__(self):
+        return str(self.name)
 
 
 
-list_of_models = [CustTerritory, Country, City, Coefficient, Distance, BorderCrossing, SiteContentData, News]
+list_of_models = [CustTerritory, Country, City, Coefficient, Distance,
+                  BorderCrossing, SiteContentData, News, Warehouse]
