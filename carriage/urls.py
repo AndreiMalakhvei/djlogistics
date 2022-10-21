@@ -9,7 +9,8 @@ urlpatterns = [
     path('warehouse/', views.warehouse, name='warehouse'),
     path('warehouse/<int:pk>', views.warehouse_detail, name='warehouse_detail'),
     path('transport/<int:pk>/', views.transport, name='transport'),
-    path('news/', views.news, name='news'),
+    # path('news/', views.news, name='news'),
+    path('news/', views.NewsListView.as_view(), name='news'),
     path('news/<int:pk>/', views.news_detail, name='news_detail'),
     path('search/', views.search, name='search'),
 

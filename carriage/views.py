@@ -1,5 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render
+from django.views.generic import ListView
+
 from carriage.models import Test, Country, City, SiteContentData, News, Warehouse
 from carriage.routefinder import shortest
 from carriage.forms import RouteFindForm
@@ -49,8 +51,21 @@ def warehouse_detail(request, pk):
     return render(request, 'carriage/news_details.html', {'article': article})
 
 
-def news(request):
-    return render(request, 'carriage/news.html', {'news': all_news})
+class NewsListView(ListView):
+    model = News
+    paginate_by = 3
+    template_name = 'carriage/news.html'
+
+
+
+#
+# def news(request):
+#     return render(request, 'carriage/news.html', {'news': all_news})
+
+
+def news_detail(request, pk):
+    article = all_news.get(pk=pk)
+    return render(request, 'carriage/news_details.html', {'article': article})
 
 
 def transport(request, pk):
@@ -58,6 +73,4 @@ def transport(request, pk):
     return render(request, 'carriage/transport.html', {'mode': mode, 'content_vars': site_content_variable})
 
 
-def news_detail(request, pk):
-    article = all_news.get(pk=pk)
-    return render(request, 'carriage/news_details.html', {'article': article})
+

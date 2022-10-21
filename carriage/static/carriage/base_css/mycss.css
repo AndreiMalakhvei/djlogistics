@@ -1,8 +1,18 @@
-input[type=text] {
-  border: 2px solid red;
-  border-radius: 4px;
-  background-color: lightblue;
+
+
+/*.page-nav-wrap ul li .page-numbers:hover {*/
+.pagactive {
+    /*background-color: #1f425d;*/
+    background-color: #fd7062 !important;
+    color: #fff;
 }
+
+
+/*input[type=text] {*/
+/*  border: 2px solid red;*/
+/*  border-radius: 4px;*/
+/*  background-color: lightblue;*/
+/*}*/
 
 .custom {
   border: 2px solid red;
