@@ -5,18 +5,37 @@ from django.views.generic import ListView
 from carriage.models import Test, Country, City, SiteContentData, News, Warehouse
 from carriage.routefinder import shortest
 from carriage.forms import RouteFindForm
+from django.core.paginator import Paginator
 
 site_content_variable = SiteContentData.objects.all()
 all_news = News.objects.all().order_by('-date_of_news')
 all_warehouses = Warehouse.objects.all()
 
+# def search(request):
+#     text = request.GET.get('search')
+#     if text:
+#         articles = all_news.filter(Q(title__contains=text) | Q(body__contains=text))
+#     else:
+#         articles = all_news.none()
+#     return render(request, 'carriage/search.html', {'news': articles})
+
+
 def search(request):
     text = request.GET.get('search')
     if text:
         articles = all_news.filter(Q(title__contains=text) | Q(body__contains=text))
+        paginator = Paginator(articles, 4)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
     else:
-        articles = all_news.none()
-    return render(request, 'carriage/search.html', {'news': articles})
+        # articles = all_news.none()
+        # paginator = Paginator(articles, 4)
+        # page_number = request.GET.get('page')
+        page_obj = all_news.none()
+
+    return render(request, 'carriage/search.html', {'page_obj': page_obj, 'text': text})
+
 
 
 def start_page(request):

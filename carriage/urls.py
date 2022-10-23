@@ -13,6 +13,7 @@ urlpatterns = [
     path('news/', views.NewsListView.as_view(), name='news'),
     path('news/<int:pk>/', views.news_detail, name='news_detail'),
     path('search/', views.search, name='search'),
+    # path('search/', views.SearchListView.as_view(), name='search'),
 
     # path('<int:pk>/', views.detail, name='project_detail'),
 ]
