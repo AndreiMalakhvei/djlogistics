@@ -1,0 +1,40 @@
+
+{% extends 'carriage/carriage_base.html' %}
+{%  load static %}
+
+{% block styles %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'carriage/base_css/mycss.css' %}">
+{%  endblock %}
+
+
+{%  block carriage_content %}
+
+
+    <div class="page-banner-wrap text-center bg-cover" style="background-image: url('{% static 'carriage/img/home2/news.jpg'%}')">
+        <div class="container">
+            <div class="page-heading text-white">
+                <h1>News</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-8">
+    <div class="d-flex justify-content-lg-center">
+
+        <form action="" class="row" method="post">
+                            {% csrf_token %}
+
+        <div class="form-group">
+            {{ form.txtstr }}
+        </div>
+        <div class="form-group">
+            {{ form.mail }}
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+</div>
+</div>
+
+    {%  endblock %}

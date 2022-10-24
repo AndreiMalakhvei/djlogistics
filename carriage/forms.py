@@ -51,3 +51,12 @@ class TestDisplayForm(forms.Form):
     details = forms.CharField(label='Detailed Route')
 
 
+class ContactForm(forms.Form):
+    fname = forms.CharField(label='First Name', max_length=60, widget=forms.TextInput(attrs={'class': "form-control myform-control", 'autocomplete': "off"}))
+    mail = forms.EmailField(label='email', widget=forms.TextInput(attrs={'class': "form-control myform-control", 'autocomplete':"off"}))
+    phone = forms.CharField(label='Phone number', max_length=20, widget=forms.TextInput(attrs={'class': "form-control myform-control", 'autocomplete': "off"}))
+    subject = forms.CharField(label='Subject', max_length=60, widget=forms.TextInput(attrs={'class': "form-control myform-control", 'autocomplete': "off"}))
+    body = forms.CharField(label='Message', max_length=500, widget=forms.Textarea(attrs={'class': "form-control myform-control", 'autocomplete': "off"}))
+
+
+

@@ -30,7 +30,7 @@
                         {% for article in page_obj %}
 
                         <div class="single-blog-post">
-                            <div class="post-featured-thumb bg-cover" style="background-image: url('{{ article.news_image.url }}')"></div>
+{#                            <div class="post-featured-thumb bg-cover" style="background-image: url('{{ article.news_image.url }} ')"></div>#}
                             <div class="post-content">
 
                                 <h2><a href="{%  url 'carriage:news_detail' pk=article.pk  %}">{{ article.title }}</a></h2>

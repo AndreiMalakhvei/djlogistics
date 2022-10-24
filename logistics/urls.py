@@ -26,6 +26,7 @@ urlpatterns = [
     path('carriage/', include('carriage.urls')),
     path('admin/', admin.site.urls),
     path('', views.start_page, name='start'),
+    path('test/', views.test, name='test'),
 
 ]
 

@@ -1,6 +1,12 @@
 {% extends 'carriage/carriage_base.html' %}
 {%  load static %}
 
+{% block styles %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'carriage/base_css/mycss.css' %}">
+{%  endblock %}
+
+
 {%  block carriage_content %}
 
 
@@ -13,16 +19,7 @@
             </div>
         </div>
     </div>
-    <div class="breadcrumb-wrapper">
-        <div class="container">
-            <nav>
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">contact Us</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
+
 
     <section class="contact-page-wrap section-padding">
         <div class="container">
@@ -105,41 +102,29 @@
                 </div>
 
                 <div class="col-12 col-lg-12">
-                    <div class="contact-form">                                                        
-                        <form action="mail.php" class="row" id="contact-form">
-                            <div class="col-md-6 col-12">
-                                <div class="single-personal-info">
-                                    <label for="fname">Full Name</label>
-                                    <input type="text" id="fname" placeholder="Enter Name" >                                         
-                                </div>
-                            </div>                            
-                            <div class="col-md-6 col-12">
-                                <div class="single-personal-info">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" placeholder="Enter Email Address" >                                         
-                                </div>
+                    <div class="contact-form">
+                        <form action="" class="row"  method="POST">
+
+                            {% csrf_token %}
+                            <div class="col-md-8 offset-md-2">
+                               {% if form.errors %}
+                                   {% for field in form %}
+                                          {% for error in field.errors %}
+                                                   <p> <h5 class="formerror" >{{ error }}</h5>
+                                          {% endfor %}
+                                   {% endfor %}
+                                {% endif %}
+
+                            {% for field in form %}
+                                {{ field.label_tag }}
+                            {{ field }}
+                            {%  endfor %}
                             </div>
-                            <div class="col-md-6 col-12">
-                                <div class="single-personal-info">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="text" id="phone" placeholder="Enter Number">                                         
-                                </div>
-                            </div>                                      
-                            <div class="col-md-6 col-12">
-                                <div class="single-personal-info">
-                                    <label for="subject">Subject</label>
-                                    <input type="text" id="subject" placeholder="Enter Subject">                                         
-                                </div>
-                            </div>                                      
-                            <div class="col-md-12 col-12">
-                                <div class="single-personal-info">
-                                    <label for="message">Enter Message</label>
-                                    <textarea id="message" placeholder="Enter message"></textarea>                                        
-                                </div>
-                            </div>                                      
+                            <div class="contactbutton">
                             <div class="col-md-12 col-12 text-center">
-                                <input class="submit-btn" type="submit" value="Submit contact form">
-                            </div>                                      
+                                <input class="submit-btn" type="submit" value="Send us contact form">
+                            </div>
+                            </div>
                         </form>
                     </div>
                 </div>

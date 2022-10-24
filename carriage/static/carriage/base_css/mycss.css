@@ -1,4 +1,46 @@
+.myform-control:-webkit-autofill,
+.myform-control:-webkit-autofill:hover,
+.myform-control:-webkit-autofill:focus
+ {
+  border: 1px solid green;
+  -webkit-text-fill-color: green;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
 
+
+.formerror {
+    color: red;
+}
+
+
+
+.myform-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(253,	112, 98) !important;
+}
+
+.successmessage {
+    margin-top: 60px !important;
+    margin-bottom: 60px !important;
+    color: #fd7062 !important;
+}
+
+.successtext {
+    color: #fd7062 !important;
+}
+
+.contactbutton {
+    margin-top: 30px !important;
+}
+
+
+.formtextfield {
+    width: 100%;
+    background: #f8f8f8;
+    line-height: 1;
+    padding: 25px 30px;
+    border: 0px;
+}
 
 /*.page-nav-wrap ul li .page-numbers:hover {*/
 .pagactive {
@@ -7,17 +49,10 @@
     color: #fff;
 }
 
-
-/*input[type=text] {*/
-/*  border: 2px solid red;*/
-/*  border-radius: 4px;*/
-/*  background-color: lightblue;*/
-/*}*/
-
 .custom {
   border: 2px solid red;
   border-radius: 4px;
-  background-color: lightblue;
+  /*background-color: lightblue;*/
 }
 
 /*select {*/
