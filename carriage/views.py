@@ -74,17 +74,18 @@ def warehouse(request):
 
 
 def warehouse_detail(request, pk):
+    prev_id = request.resolver_match.kwargs['pk']
     if request.method == 'POST':
         form = WarehouseRequestForm(request.POST)
         if form.is_valid():
-            id = request.resolver_match.kwargs['pk']
-            warehouse = all_warehouses.get(pk=id)
-            return render(request, 'carriage/warehouse_detail_result.html', {'warehouse': warehouse})
+            # id = request.resolver_match.kwargs['pk']
+            warehouse = all_warehouses.get(pk=prev_id)
+            return render(request, 'carriage/warehouse_detail_result.html', {'warehouse': warehouse, 'prev_id': prev_id})
         else:
-            return render(request, 'carriage/warehouse_detail.html', {'form': form})
+            return render(request, 'carriage/warehouse_detail.html', {'form': form, 'prev_id': prev_id})
     warehouse = all_warehouses.get(pk=pk)
     form = WarehouseRequestForm()
-    return render(request, 'carriage/warehouse_detail.html', {'warehouse': warehouse, 'form': form})
+    return render(request, 'carriage/warehouse_detail.html', {'warehouse': warehouse, 'form': form, 'prev_id': prev_id})
 
 
 class NewsListView(ListView):
@@ -104,7 +105,8 @@ def news_detail(request, pk):
 
 def transport(request, pk):
     mode = site_content_variable.get(pk=pk)
-    return render(request, 'carriage/transport.html', {'mode': mode, 'content_vars': site_content_variable})
+    prev_id = int(request.resolver_match.kwargs['pk'])
+    return render(request, 'carriage/transport.html', {'mode': mode, 'content_vars': site_content_variable, 'prev_id': prev_id})
 
 
 def test(request):

@@ -1,6 +1,11 @@
 {% extends 'carriage/carriage_base.html' %}
 {%  load static %}
 
+{% block styles %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'carriage/base_css/mycss.css' %}">
+{%  endblock %}
+
 {%  block carriage_content %}
 
     <div class="page-banner-wrap text-center bg-cover" style="background-image: url('{% static 'carriage/img/home2/transport.jpg'%}')">
@@ -36,11 +41,12 @@
                                 <h3>Modes of transport</h3>
                             </div>
                             <div class="services-category-link">
+                            {% with url_name=request.resolver_match.url_name %}
                                 {% for var in content_vars %}
-                                <a href="{%  url 'carriage:transport' pk=var.pk  %}">{{ var.short_descr }}</a>
+                                <a href="{%  url 'carriage:transport' pk=var.pk  %} "{% if url_name == 'transport' and var.id == prev_id %} class="act"{% endif %}>{{ var.short_descr }}</a>
 
                                 {%  endfor %}
-
+                            {%  endwith %}
                             </div>
                         </div>
 
