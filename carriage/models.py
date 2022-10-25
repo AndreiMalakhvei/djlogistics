@@ -147,6 +147,21 @@ class Warehouse(models.Model):
         return str(self.name)
 
 
+class ContactRequest(models.Model):
+    fname = models.CharField(verbose_name='First Name', max_length=60)
+    mail = models.EmailField(verbose_name='email')
+    phone = models.CharField(verbose_name='Phone number', max_length=20)
+    subject = models.CharField(verbose_name='Subject', max_length=60)
+    body = models.CharField(verbose_name='Message', max_length=500)
+    req_date = models.DateTimeField(verbose_name='Date')
+    class Meta:
+        verbose_name = 'Contact Request'
+        verbose_name_plural = 'Contact Requests'
+        ordering = ['-req_date']
+
+    def __str__(self):
+        return str(f'{self.req_date.date()} from {self.fname} on {self.subject}')
+
 
 list_of_models = [CustTerritory, Country, City, Coefficient, Distance,
-                  BorderCrossing, SiteContentData, News, Warehouse]
+                  BorderCrossing, SiteContentData, News, Warehouse, ContactRequest]

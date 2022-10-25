@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from carriage.models import City
+from carriage.models import City, Warehouse
 
 class RouteFindForm(forms.Form):
     def __init__(self, *args, **kwargs):
@@ -58,5 +58,13 @@ class ContactForm(forms.Form):
     subject = forms.CharField(label='Subject', max_length=60, widget=forms.TextInput(attrs={'class': "form-control myform-control", 'autocomplete': "off"}))
     body = forms.CharField(label='Message', max_length=500, widget=forms.Textarea(attrs={'class': "form-control myform-control", 'autocomplete': "off"}))
 
+
+class WarehouseRequestForm(forms.Form):
+    pll_num = forms.IntegerField(label='Number of pallets')
+    codes_num = forms.IntegerField(label='Number of customs codes')
+    units_num = forms.IntegerField(label='Number of units for labelling')
+    t1 = forms.BooleanField(label='Cargo is under customs control procedure')
+    arr_date = forms.DateField(label='Date of arrival')
+    dep_date = forms.DateField(label='Date of departure')
 
 

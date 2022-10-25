@@ -1,0 +1,95 @@
+
+{% extends 'carriage/carriage_base.html' %}
+{%  load static %}
+
+{%  block carriage_content %}
+
+
+    <div class="page-banner-wrap text-center bg-cover" style="background-image: url('{{ warehouse.warehouse_image.url }} ')">
+        <div class="container">
+            <div class="page-heading text-white">
+                <h1>{{ warehouse.name }}<br>{{ warehouse.city.name }}, {{ warehouse.city.country.name }} <br> {{ warehouse.address }}</h1>
+            </div>
+        </div>
+    </div>
+
+<section class="faq-wrapper section-padding section-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <div class="faq-content">
+                        <div class="faq-accordion mtm-20">
+                            <div class="accordion" id="accordion">
+
+                                <div class="accordion-item">
+                                  <h4 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                                        General information:
+                                  </h4>
+                                  <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                                    <div class="accordion-body">
+                                                <div class="row">
+                                                    <div class="col-md-7">Capacity</div>
+                                                    <div class="col-md-3">{{ warehouse.capacity }}</div>
+                                                    <div class="col-md-2">m3</div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-7">{% if warehouse.bonded %} Bonded warehouse {% else %} NOT bonded warehouse {% endif %}</div>
+                                                </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                  <h4 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                        Pricing details
+                                    </button>
+                                  </h4>
+                                  <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-7">Loading or unloading per 1 pallet</div> <div class="col-md-3">{{ warehouse.loading }}</div> <div class="col-md-2">EUR</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-7">Labelling per unit</div> <div class="col-md-3">{{ warehouse.labeling }}</div> <div class="col-md-2">EUR</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-7">Storage per pallet</div> <div class="col-md-3">{{ warehouse.storage }}</div> <div class="col-md-2">EUR</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-7">EX1 declaration for 5 items</div> <div class="col-md-3">{{ warehouse.ex }}</div> <div class="col-md-2">EUR</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-7">each extra item in EX1</div> <div class="col-md-3">{{ warehouse.codes_add }}</div> <div class="col-md-2">EUR</div>
+                                        </div>
+                                        {% if warehouse.manifest %}
+                                        <div class="row">
+                                            <div class="col-md-7">Cargo manifest</div> <div class="col-md-3">{{ warehouse.manifest }}</div> <div class="col-md-2">EUR</div>
+                                        </div>
+                                        {% endif %}
+                                        {% if warehouse.bonded %}
+                                        <div class="row">
+                                            <div class="col-md-7">Coefficient for transit cargoes</div> <div class="col-md-3">{{ warehouse.customs_coeff }}</div>
+                                        </div>
+                                        {% endif %}
+
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {%  endblock %}
