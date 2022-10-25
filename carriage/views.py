@@ -74,6 +74,14 @@ def warehouse(request):
 
 
 def warehouse_detail(request, pk):
+    if request.method == 'POST':
+        form = WarehouseRequestForm(request.POST)
+        if form.is_valid():
+            id = request.resolver_match.kwargs['pk']
+            warehouse = all_warehouses.get(pk=id)
+            return render(request, 'carriage/warehouse_detail_result.html', {'warehouse': warehouse})
+        else:
+            return render(request, 'carriage/warehouse_detail.html', {'form': form})
     warehouse = all_warehouses.get(pk=pk)
     form = WarehouseRequestForm()
     return render(request, 'carriage/warehouse_detail.html', {'warehouse': warehouse, 'form': form})

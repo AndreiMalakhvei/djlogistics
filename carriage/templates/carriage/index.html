@@ -68,9 +68,10 @@
                                         <li>
                                             <a class="has-arrow" href="{% url 'carriage:warehouse' %}">Warehouses</a>
                                             <ul class="sub-menu">
-                                                <li><a href="faq.html">Lithuania</a></li>
-                                                <li><a href="services-details.html">Poland</a></li>
-                                                <li><a href="team.html">Germany</a></li>
+                                            {% for nav_item in nav_warehouses %}
+                                                <li><a href="{% url 'carriage:warehouse_detail' pk=nav_item.pk %}">{{ nav_item.name }} <img src="{{ nav_item.city.country.flag_small.url }}"></a></li>
+                                             {% endfor %}
+
                                             </ul>
                                         </li>
 
@@ -137,9 +138,9 @@
                         <li>
                             <a class="has-arrow" href="{% url 'carriage:warehouse' %}">Warehouses</a>
                             <ul class="sub-menu">
-                                <li><a href="faq.html">Lithuania</a></li>
-                                <li><a href="services-details.html">Poland</a></li>
-                                <li><a href="team.html">Germany</a></li>
+                                {% for nav_item in nav_warehouses %}
+                                    <li><a href="{% url 'carriage:warehouse_detail' pk=nav_item.pk %}">{{ nav_item.name }} <img src="{{ nav_item.city.country.flag_small.url }}"></a></li>
+                                {% endfor %}
                             </ul>
                         </li>
 
