@@ -108,8 +108,18 @@
                             {% for field in form %}
 
                                 <div class="row ware">
-                                    {{ field.label_tag }}
-                                    {{ field }}
+                                {% if field.name == 't1'%}
+
+                                    {% if warehouse.bonded%}
+                                        {{ field.label_tag }}
+                                        {{ field }}
+                                    {% endif %}
+
+                                {%  else %}
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {%  endif %}
+
                                 </div>
                             {%  endfor %}
 

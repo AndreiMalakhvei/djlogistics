@@ -84,10 +84,10 @@ def warehouse_detail(request, pk):
             return render(request, 'carriage/warehouse_detail.html', {'form': form, 'prev_id': prev_id})
     warehouse_out = all_warehouses.get(pk=pk)
     form = WarehouseRequestForm()
-    if warehouse_out.bonded:
-        form.declared_fields['t1'].disabled = False
-    else:
-        form.declared_fields['t1'].disabled = True
+    # if warehouse_out.bonded:
+    #     form.declared_fields['t1'].disabled = False
+    # else:
+    #     form.declared_fields['t1'].disabled = True
     return render(request, 'carriage/warehouse_detail.html', {'warehouse': warehouse_out, 'form': form,
                                                               'prev_id': prev_id})
 

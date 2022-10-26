@@ -86,8 +86,8 @@ class Vertex:
         self.log.reverse()
 
     def get_cleaned_time(self):
-        self.days = int(self.totaltime // 24)
-        self.hours = int(self.totaltime % 24)
+        self.days = int(self.time // 24)
+        self.hours = int(self.time % 24)
 
     @staticmethod
     def get_inst(value):
@@ -105,7 +105,7 @@ class FirstVertex:
         self.price = 0
         self.value = self.distance
         self.destinations = graph[self.name]
-        self._worktime = 0
+        self.worktime = 0
         self.totaltime = 0
         self.previous_name = None
         Vertex.vertices.append(self)
