@@ -2,8 +2,8 @@ from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from carriage.models import Test, Country, City, SiteContentData, News, Warehouse, ContactRequest
-from carriage.routefinder import shortest
+from carriage.models import SiteContentData, News, Warehouse, ContactRequest
+from carriage.routefinder import shortest, WarehouseResult
 from carriage.forms import RouteFindForm, ContactForm, WarehouseRequestForm
 from django.core.paginator import Paginator
 import datetime
@@ -78,13 +78,19 @@ def warehouse_detail(request, pk):
     if request.method == 'POST':
         form = WarehouseRequestForm(request.POST)
         if form.is_valid():
-            # id = request.resolver_match.kwargs['pk']
             warehouse = all_warehouses.get(pk=prev_id)
-            return render(request, 'carriage/warehouse_detail_result.html', {'warehouse': warehouse, 'prev_id': prev_id})
+            pricing = WarehouseResult(warehouse, form.cleaned_data)
+            return render(request, 'carriage/warehouse_detail_result.html', {'warehouse': warehouse, 'pricing': pricing, 'prev_id': prev_id})
         else:
             return render(request, 'carriage/warehouse_detail.html', {'form': form, 'prev_id': prev_id})
     warehouse = all_warehouses.get(pk=pk)
     form = WarehouseRequestForm()
+
+    if warehouse.bonded:
+        form.declared_fields['t1'].disabled = False
+    else:
+        form.declared_fields['t1'].disabled = True
+        # form.declared_fields['t1'].widget.attrs.update({'disabled':''})
     return render(request, 'carriage/warehouse_detail.html', {'warehouse': warehouse, 'form': form, 'prev_id': prev_id})
 
 

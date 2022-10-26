@@ -86,3 +86,8 @@ DIV.ware {
 A.act {
     color: #fd7062 !important;
 }
+
+DIV.resultheader {
+    margin-bottom: 40px !important;
+}
+

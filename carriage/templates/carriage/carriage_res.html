@@ -12,25 +12,98 @@
     </div>
 
 
-    <section class="contact-page-wrap section-padding">
+
+    <section class="faq-wrapper section-padding section-bg">
         <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                <div class="row resultheader">
+                    <div class="col-md-6 offset-md-4">
+                        <h4>Request result</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <p>City of Departure:</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>{{ res.start }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <p>City of Destination:</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>{{ res.name }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <p>Distance</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>{{ res.distance }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>km</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <p>Transit cities</p>
+                    </div>
+                    <div class="col-md-2">
+
+                        <p>{% for x in res.log %} {{ x }} {%  endfor %}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <h5>Transit time:</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>{{ res.days }}</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>{{ res.hours }}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <h5>Price:</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>{{ res.price }}</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>EUR</h5>
+                    </div>
+                </div>
 
 
-            <p>Город отправления {{ res.start }} </p>
-            <p>Город назначения {{ res.name }} </p>
-            <p>Дистанция {{ res.distance }} </p>
-            <p>Транзитное время {{ res.time }} </p>
-            <p>Цена {{ res.price }} </p>
-            <p>Детализация {{ res.log }} </p>
 
-            <p>Value {{ res.value }} </p>
-
-
-
-
-
-
+               </div>
+            </div>
         </div>
     </section>
+
+
+
 
  {% endblock %}

@@ -78,6 +78,11 @@ class Vertex:
                     k = i
         self.log.reverse()
 
+    def get_cleaned_time(self):
+        self.days = int(self.totaltime // 24)
+        self.hours = int(self.totaltime % 24)
+
+
     @staticmethod
     def get_inst(value):
         for i in Vertex.vertices:
@@ -119,6 +124,7 @@ def shortest(start_str, finish_str, selection):
         if next_vertex.name == finish_str:
             next_vertex.log = []
             next_vertex.get_log(start)
+            next_vertex.get_cleaned_time()
             break
         # Добавляем в список вершины, смежные с next_vertex, и пересчитываем для них веса рёбер:
         for i in next_vertex.destinations.items():
@@ -142,3 +148,34 @@ def shortest(start_str, finish_str, selection):
 
     Vertex.vertices.clear()
     return next_vertex
+
+
+class WarehouseResult:
+    def __init__(self, price_query, data_dict):
+        self.coeff = 1
+        if data_dict['t1']:
+            self.coeff = price_query.customs_coeff
+
+        self._timedelta = data_dict['dep_date'] - data_dict['arr_date']
+        self.pll_handling = data_dict['pll_num'] * 2 * price_query.loading * self.coeff
+        self.pll_storage = self._timedelta.days * data_dict['pll_num'] * price_query.storage * self.coeff
+        self.labelling = data_dict['units_num'] *  price_query.labeling * self.coeff
+        self.ex = price_query.ex
+        if data_dict['codes_num'] > 5:
+            self.ex += (data_dict['codes_num'] - 5) * price_query.codes_add
+        self.total = self.pll_handling + self.pll_storage + self.labelling + self.ex
+
+        self.manifest = 0
+        if price_query.manifest:
+            self.manifest = price_query.manifest
+            self.total += self.manifest
+
+
+    def __setattr__(self, attr, value):
+        if type(value).__name__ == 'float':
+            value = round(value, 2)
+        return object.__setattr__(self, attr, value)
+
+
+
+

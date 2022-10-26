@@ -2,6 +2,7 @@
 {% extends 'carriage/carriage_base.html' %}
 {%  load static %}
 
+
 {% block styles %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'carriage/base_css/mycss.css' %}">
@@ -21,7 +22,85 @@
     <section class="faq-wrapper section-padding section-bg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-12">
+                <div class="col-lg-4 col-12">
+                <div class="row resultheader">
+                    <div class="col-md-6 offset-md-4">
+                        <h4>Pricing result:</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <p>Loading/unloading works:</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>{{ pricing.pll_handling }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>EUR</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <p>Storage:</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>{{ pricing.pll_storage }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>EUR</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <p>Labelling:</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>{{ pricing.labelling }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>EUR</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <p>Export declaration:</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>{{ pricing.ex }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>EUR</p>
+                    </div>
+                </div>
+                {% if pricing.manifest %}
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <p>Cargo Manifest:</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>{{ pricing.manifest }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>EUR</p>
+                    </div>
+                </div>
+                 {% endif %}
+
+                 <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <h5>TOTAL</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>{{ pricing.total }}</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>EUR</h5>
+                    </div>
+                </div>
 
 
                </div>
