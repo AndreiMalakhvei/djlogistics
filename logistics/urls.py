@@ -26,9 +26,7 @@ urlpatterns = [
     path('carriage/', include('carriage.urls')),
     path('admin/', admin.site.urls),
     path('', views.start_page, name='start'),
-    path('test/', views.test, name='test'),
-
-]
+    ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # This will return the proper URL pattern for serving static files to your already defined pattern list.

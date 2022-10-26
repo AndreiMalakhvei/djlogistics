@@ -115,6 +115,4 @@ def transport(request, pk):
     return render(request, 'carriage/transport.html', {'mode': mode, 'content_vars': site_content_variable, 'prev_id': prev_id})
 
 
-def test(request):
-    form = ContactForm()
-    return render(request, 'carriage/test.html', {'form': form})
+

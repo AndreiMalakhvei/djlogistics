@@ -212,7 +212,7 @@
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
             <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="44px" height="44px" id="circle" fill="none" stroke="currentColor">
-                <circle r="20" cy="22" cx="22" id="translandcircle" />
+
             </symbol>
         </svg>
 
@@ -389,7 +389,7 @@
             <div class="row">
                 <div class="col-xl-4 col-md-6 col-12">
                     <div class="single-freight-service wow fadeInUp">
-                        <h3><a href="services-details.html">Land Transport</a></h3>
+                        <h3><a href="{% url 'carriage:transport' pk=1 %}">Land Transport</a></h3>
                         <p>Road transport and industry driving coordinations experience</p>
                         <div class="checked-list right">
                             <li>Replenishment & Picking</li>
@@ -401,7 +401,7 @@
                 </div>
                 <div class="col-xl-4 col-md-6 col-12">
                     <div class="single-freight-service active wow fadeInUp" data-wow-delay=".3s">
-                        <h3><a href="services-details.html">Air Freight</a></h3>
+                        <h3><a href="{% url 'carriage:transport' pk=2 %}">Air Freight</a></h3>
                         <p>Air transport organization and industry driving coordinations experience</p>
                         <div class="checked-list right">
                             <li>General Air Freight Products</li>
@@ -413,7 +413,7 @@
                 </div>
                 <div class="col-xl-4 col-md-6 col-12">
                     <div class="single-freight-service wow fadeInUp" data-wow-delay=".6s">
-                        <h3><a href="services-details.html">Ocean Freight</a></h3>
+                        <h3><a href="{% url 'carriage:transport' pk=3 %}">Ocean Freight</a></h3>
                         <p>Ocean freight gives organization and industry excellent experience</p>
                         <div class="checked-list right">
                             <li>Less-than-container Load</li>
@@ -510,4 +510,3 @@
     </section>
 
 {%  endblock %}
-

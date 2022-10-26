@@ -90,9 +90,7 @@
                 </div>
 
                 <div class="col-lg-6 col-12">
-{#                    <div class="contact-form">#}
                         <form action="" class="row"  method="POST">
-
                             {% csrf_token %}
                             <div class="col-md-8 offset-md-2">
                                 {%  if form.non_field_errors %}
@@ -117,18 +115,18 @@
 
 
                             </div>
-                            <div class="contactbutton">
-                            <div class="col-md-12 col-12 text-center">
-                                <div class="contact-form">
-                                <input class="submit-btn" type="submit" value="Get detailed price offer">
-                                  </div>
-                            </div>
+                                <div class="contactbutton">
+                                <div class="col-md-12 col-12 text-center">
+                                    <div class="contact-form">
+                                        <input class="submit-btn" type="submit" value="Get detailed price offer">
+                                    </div>
+                                </div>
                             </div>
                         </form>
 
-{#                </div>#}
+
             </div>
         </div>
-    </section>
+</section>
 
     {%  endblock %}

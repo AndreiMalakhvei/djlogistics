@@ -20,34 +20,22 @@
                 <div class="col-12 col-lg-8">
                     <div class="blog-posts">
 
-
-
                         <div class="single-blog-post">
                             <div class="post-featured-thumb bg-cover" style="background-image: url('{{ article.news_image.url }}')"></div>
 
+                                <div class="post-content">
 
+                                    <h2><a href="{%  url 'carriage:news_detail' pk=article.pk  %}">{{ article.title }}</a></h2>
+                                    <div class="post-meta">
 
-
-                            <div class="post-content">
-
-                                <h2><a href="{%  url 'carriage:news_detail' pk=article.pk  %}">{{ article.title }}</a></h2>
-                                <div class="post-meta">
-
-                                    <span><i class="fal fa-calendar-alt"></i>{{ article.date_of_news }}</span>
-                                </div>
-                                <p>{{ article.body }}</p>
-                                <div class="d-flex justify-content-between align-items-center mt-30">
-
-
-                                </div>
+                                            <span><i class="fal fa-calendar-alt"></i>{{ article.date_of_news }}</span>
+                                    </div>
+                                        <p>{{ article.body }}</p>
+                                    <div class="d-flex justify-content-between align-items-center mt-30">
+                                    </div>
                             </div>
                         </div>
-
-
-
-
                     </div>
-
 
                 </div>
                 <div class="col-12 col-lg-4">
@@ -63,8 +51,6 @@
                                 </form>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

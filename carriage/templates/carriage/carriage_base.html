@@ -34,7 +34,7 @@
                                     <ul class="sub-menu">
                                         {% for nav_item in nav_warehouses %}
 
-                                            <li><a href="{% url 'carriage:warehouse_detail' pk=nav_item.pk %}" {% if url_name == 'warehouse_detail' and nav_item.id == prev_id %} class="act"{% endif %}>{{ nav_item.name }}  <img src="{{ nav_item.city.country.flag_small.url }}"></a></li>
+                                            <li><a href="{% url 'carriage:warehouse_detail' pk=nav_item.pk %}" {% if url_name == 'warehouse_detail' and nav_item.id == prev_id %} class="act"{% endif %}>{{ nav_item.name }}  <img src="{{ nav_item.city.country.flag_small.url }}" alt=""></a></li>
 
                                         {% endfor %}
                                     </ul>
@@ -69,7 +69,7 @@
                                         <a class="has-arrow" href="{% url 'carriage:warehouse' %}" {% if url_name == 'carriage:warehouse' %} class="act"{% endif %}>Warehouses</a>
                                         <ul class="sub-menu">
                                             {% for nav_item in nav_warehouses %}
-                                                <li><a href="{% url 'carriage:warehouse_detail' pk=nav_item.pk %}">{{ nav_item.name }} <img src="{{ nav_item.city.country.flag_small.url }}"></a></li>
+                                                <li><a href="{% url 'carriage:warehouse_detail' pk=nav_item.pk %}">{{ nav_item.name }} <img src="{{ nav_item.city.country.flag_small.url }}" alt=""></a></li>
                                             {% endfor %}
                                         </ul>
                                     </li>
