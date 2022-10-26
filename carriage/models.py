@@ -1,9 +1,5 @@
 from django.db import models
 
-class Test(models.Model):
-    """ This is test description"""
-    image = models.ImageField(upload_to='img/')
-
 
 class CustTerritory(models.Model):
     cust_territory = models.CharField(max_length=5, verbose_name='Customs territory',
@@ -12,7 +8,7 @@ class CustTerritory(models.Model):
                                       verbose_name='Customs territory name', null=False)
 
     class Meta:
-        verbose_name='Customs territory'
+        verbose_name = 'Customs territory'
         verbose_name_plural = 'Customs territories'
 
     def __str__(self):
@@ -26,8 +22,8 @@ class Country(models.Model):
     flag_small = models.ImageField(upload_to='img/flagsmall')
 
     class Meta:
-        verbose_name='Country'
-        verbose_name_plural='Countries'
+        verbose_name = 'Country'
+        verbose_name_plural = 'Countries'
         ordering = ['name']
 
     def __str__(self):
@@ -36,15 +32,15 @@ class Country(models.Model):
 
 class City(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name='City', null=False)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='country' )
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='country')
     airport = models.BooleanField(default=False, verbose_name='Airport')
     seaport = models.BooleanField(default=False, verbose_name='Seaport')
-    warehouse = models.CharField(max_length=10, choices=[('CUST', 'CUSTOMS WAREHOUSE'), ('USUAL','USUAL WAREHOUSE')],
+    warehouse = models.CharField(max_length=10, choices=[('CUST', 'CUSTOMS WAREHOUSE'), ('USUAL', 'USUAL WAREHOUSE')],
                                  blank=True, verbose_name='Consolidation warehouse')
 
     class Meta:
-        verbose_name='City'
-        verbose_name_plural='Cities'
+        verbose_name = 'City'
+        verbose_name_plural = 'Cities'
         ordering = ['name']
 
     def __str__(self):
@@ -88,10 +84,11 @@ class BorderCrossing(models.Model):
                                             related_name='territory_of_departure',
                                             verbose_name='Customs territory of departure')
     to_cust_territory = models.ForeignKey(CustTerritory, on_delete=models.CASCADE,
-                                            related_name='territory_of_destination',
-                                            verbose_name='Customs territory of destination')
+                                          related_name='territory_of_destination',
+                                          verbose_name='Customs territory of destination')
     approx_time = models.IntegerField(null=False, verbose_name='Approximated time to cross the border')
     add_price = models.IntegerField(null=False, verbose_name='Costs for border-crossing', default=1)
+
     class Meta:
         verbose_name = 'Border Crossinge'
         verbose_name_plural = 'Border Crossings'
@@ -105,6 +102,7 @@ class SiteContentData(models.Model):
     short_descr = models.CharField(max_length=20, verbose_name='Title description', null=False)
     main_content = models.TextField(verbose_name='content')
     site_image = models.ImageField(upload_to='img/sitecontent')
+
     class Meta:
         verbose_name = 'Site content'
         verbose_name_plural = 'Site content'
@@ -118,12 +116,14 @@ class News(models.Model):
     body = models.TextField(verbose_name='News content')
     news_image = models.ImageField(upload_to='img/news')
     date_of_news = models.DateField(verbose_name='Date', default='2022-01-01')
+
     class Meta:
         verbose_name = 'News Article'
         verbose_name_plural = 'News'
 
     def __str__(self):
         return str(self.title[:20])
+
 
 class Warehouse(models.Model):
     name = models.CharField(null=False, max_length=20, verbose_name='Name')
@@ -139,6 +139,7 @@ class Warehouse(models.Model):
     manifest = models.IntegerField(null=True, blank=True, verbose_name='Applying for cargo manifest')
     customs_coeff = models.FloatField(null=True, blank=True, verbose_name='Coefficient for transit goods` handling')
     warehouse_image = models.ImageField(upload_to='img/warehouses')
+
     class Meta:
         verbose_name = 'Warehouse'
         verbose_name_plural = 'Warehouses'
@@ -154,6 +155,7 @@ class ContactRequest(models.Model):
     subject = models.CharField(verbose_name='Subject', max_length=60)
     body = models.CharField(verbose_name='Message', max_length=500)
     req_date = models.DateTimeField(verbose_name='Date')
+
     class Meta:
         verbose_name = 'Contact Request'
         verbose_name_plural = 'Contact Requests'

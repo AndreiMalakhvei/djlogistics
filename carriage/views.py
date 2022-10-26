@@ -1,8 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import ListView
-
-from carriage.models import SiteContentData, News, Warehouse, ContactRequest, City
+from carriage.models import SiteContentData, News, Warehouse, ContactRequest
 from carriage.routefinder import shortest, WarehouseResult
 from carriage.forms import RouteFindForm, ContactForm, WarehouseRequestForm
 from django.core.paginator import Paginator
@@ -23,7 +22,6 @@ def search(request):
     else:
         page_obj = all_news.none()
     return render(request, 'carriage/search.html', {'page_obj': page_obj, 'text': text})
-
 
 
 def start_page(request):
@@ -78,20 +76,20 @@ def warehouse_detail(request, pk):
     if request.method == 'POST':
         form = WarehouseRequestForm(request.POST)
         if form.is_valid():
-            warehouse = all_warehouses.get(pk=prev_id)
-            pricing = WarehouseResult(warehouse, form.cleaned_data)
-            return render(request, 'carriage/warehouse_detail_result.html', {'warehouse': warehouse, 'pricing': pricing, 'prev_id': prev_id})
+            warehouse_int = all_warehouses.get(pk=prev_id)
+            pricing = WarehouseResult(warehouse_int, form.cleaned_data)
+            return render(request, 'carriage/warehouse_detail_result.html', {'warehouse': warehouse_int,
+                                                                             'pricing': pricing, 'prev_id': prev_id})
         else:
             return render(request, 'carriage/warehouse_detail.html', {'form': form, 'prev_id': prev_id})
-    warehouse = all_warehouses.get(pk=pk)
+    warehouse_out = all_warehouses.get(pk=pk)
     form = WarehouseRequestForm()
-
-    if warehouse.bonded:
+    if warehouse_out.bonded:
         form.declared_fields['t1'].disabled = False
     else:
         form.declared_fields['t1'].disabled = True
-        # form.declared_fields['t1'].widget.attrs.update({'disabled':''})
-    return render(request, 'carriage/warehouse_detail.html', {'warehouse': warehouse, 'form': form, 'prev_id': prev_id})
+    return render(request, 'carriage/warehouse_detail.html', {'warehouse': warehouse_out, 'form': form,
+                                                              'prev_id': prev_id})
 
 
 class NewsListView(ListView):
@@ -112,7 +110,5 @@ def news_detail(request, pk):
 def transport(request, pk):
     mode = site_content_variable.get(pk=pk)
     prev_id = int(request.resolver_match.kwargs['pk'])
-    return render(request, 'carriage/transport.html', {'mode': mode, 'content_vars': site_content_variable, 'prev_id': prev_id})
-
-
-
+    return render(request, 'carriage/transport.html', {'mode': mode, 'content_vars': site_content_variable,
+                                                       'prev_id': prev_id})

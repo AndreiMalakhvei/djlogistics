@@ -10,7 +10,7 @@ def get_graph():
             graph[i.from_city.name].update({(i.to_city.name, i.coeff.coeff_type): (i.distance, i.coeff.coeff_value)})
         else:
             graph[i.from_city.name] = {(i.to_city.name, i.coeff.coeff_type): (i.distance, i.coeff.coeff_value)}
-        #    создаём обратные направления
+        # Создаём обратные направления
         if i.to_city.name in graph:
             graph[i.to_city.name].update({(i.from_city.name, i.coeff.coeff_type): (i.distance, i.coeff.coeff_value)})
         else:
@@ -44,7 +44,7 @@ class Vertex:
         self._distance = items_tuple[1][0]
         self.distance = self._distance + previous.distance
         self.price = round(items_tuple[1][1] * self._distance + previous.price + self._added_price)
-        self._worktime = self._distance / 60
+        self.worktime = self._distance / 60
         self.time = previous
 
         if selection == '1':
@@ -56,16 +56,16 @@ class Vertex:
 
     @property
     def time(self):
-        return round(self.totaltime + self._worktime)
+        return round(self.totaltime + self.worktime)
 
     @time.setter
     def time(self, previous):
-        # считаем, что фура движется 8 ч со скоростью 60 км/час, после чего делает перерыв 10 часов. Через пять рабочих
+        # Считаем, что фура движется 8 ч со скоростью 60 км/час, после чего делает перерыв 10 часов. Через пять рабочих
         # дней (120ч) - пауза 36 ч
-        a = self._worktime + previous._worktime
+        a = self.worktime + previous.worktime
         b = a // 8
-        self._worktime = a % 8
-        checked_time = previous.totaltime + (a - self._worktime) + b * 10
+        self.worktime = a % 8
+        checked_time = previous.totaltime + (a - self.worktime) + b * 10
         self.totaltime = checked_time + (checked_time // 120) * 36 + self._added_time
 
     class HtmlCity:
@@ -74,9 +74,7 @@ class Vertex:
             self.country = Vertex.qs.get(name=cityname).country.name
             self.flag = Vertex.qs.get(name=cityname).country.flag_small
 
-
     def get_log(self, start):
-
         self.start = start.name
         self.log.append(Vertex.HtmlCity(self.name))
         k = self
@@ -87,11 +85,9 @@ class Vertex:
                     k = i
         self.log.reverse()
 
-
     def get_cleaned_time(self):
         self.days = int(self.totaltime // 24)
         self.hours = int(self.totaltime % 24)
-
 
     @staticmethod
     def get_inst(value):
@@ -117,10 +113,10 @@ class FirstVertex:
 
 def shortest(start_str, finish_str, selection):
     graph = get_graph()
-    # Создаём первый экземпляр класса. Нужно вручную определить значения всех аттрибутов
+    # Создаём первый экземпляр класса
     start = FirstVertex(start_str, graph)
 
-    # Создаём первые экземпляры с автоматическим высчитванием значений аттрибутов
+    # Создаём первые экземпляры с автоматическим вычислением значений аттрибутов
     for i in start.destinations.items():
         Vertex(i, graph, start, selection)
 
@@ -132,21 +128,19 @@ def shortest(start_str, finish_str, selection):
         next_vertex.visited = True
         # Проверяем, является ли следующая выбранная вершина пунктом назначения
         if next_vertex.name == finish_str:
-
             next_vertex.get_log(start)
             next_vertex.get_cleaned_time()
             break
         # Добавляем в список вершины, смежные с next_vertex, и пересчитываем для них веса рёбер:
         for i in next_vertex.destinations.items():
-            # проверяем, есть ли уже в Vertex.vertices вершины, представляющие собой направления из next_vertex
+            # Проверяем, есть ли уже в Vertex.vertices вершины, представляющие собой направления из next_vertex
             somevar = Vertex.get_inst(i[0][0])
             # Если в Vertex.vertices не найдено таких вершин, то создаётся новый экземпляр класса.
             # Значения аттрибутов плюсуются к значениям, которые были у next_vertex
             if not somevar:
                 Vertex(i, graph, next_vertex, selection)
-
-            # если же такая вершина уже есть и она ещё не отмечена как посещённая, то сравниваем, какой вес меньше:
-            # от старта через next_vertex до неё или прежнее "от старта через иную вершину"
+            # Если же такая вершина уже есть и она ещё не отмечена как посещённая, то сравниваем, какой вес меньше:
+            # от старта через next_vertex до неё или прежнее значение "от старта через иную вершину"
             else:
                 if not somevar.visited:
                     alternative_somevar = Vertex(i, graph, next_vertex, selection)
@@ -154,7 +148,6 @@ def shortest(start_str, finish_str, selection):
                         Vertex.vertices.remove(somevar)
                     else:
                         Vertex.vertices.remove(alternative_somevar)
-                        # Vertex(i, graph, next_vertex, selection)
 
     Vertex.vertices.clear()
     return next_vertex
@@ -169,23 +162,17 @@ class WarehouseResult:
         self._timedelta = data_dict['dep_date'] - data_dict['arr_date']
         self.pll_handling = data_dict['pll_num'] * 2 * price_query.loading * self.coeff
         self.pll_storage = self._timedelta.days * data_dict['pll_num'] * price_query.storage * self.coeff
-        self.labelling = data_dict['units_num'] *  price_query.labeling * self.coeff
+        self.labelling = data_dict['units_num'] * price_query.labeling * self.coeff
         self.ex = price_query.ex
         if data_dict['codes_num'] > 5:
             self.ex += (data_dict['codes_num'] - 5) * price_query.codes_add
         self.total = self.pll_handling + self.pll_storage + self.labelling + self.ex
-
         self.manifest = 0
         if price_query.manifest:
             self.manifest = price_query.manifest
             self.total += self.manifest
 
-
     def __setattr__(self, attr, value):
         if type(value).__name__ == 'float':
             value = round(value, 2)
         return object.__setattr__(self, attr, value)
-
-
-
-
