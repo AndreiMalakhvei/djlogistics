@@ -2,7 +2,7 @@ from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from carriage.models import SiteContentData, News, Warehouse, ContactRequest
+from carriage.models import SiteContentData, News, Warehouse, ContactRequest, City
 from carriage.routefinder import shortest, WarehouseResult
 from carriage.forms import RouteFindForm, ContactForm, WarehouseRequestForm
 from django.core.paginator import Paginator

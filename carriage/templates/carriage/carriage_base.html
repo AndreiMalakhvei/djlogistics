@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{%  load static %}
+
+{% block styles %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'carriage/base_css/mycss.css' %}">
+{%  endblock %}
+
+
+ {% block extender %}
+
+
+    <header class="header-1">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-3 col-sm-5 col-md-4 col-6 pr-lg-5">
+                    <div class="logo">
+                        <a href="{% url 'start' %}">
+                        <img src="{% static 'carriage/img/logo.png' %}"  alt="SG">
+                        </a>
+                    </div>
+                </div>
+
+            {% with url_name=request.resolver_match.url_name %}
+                <div class="col-lg-9 text-end p-lg-0 d-none d-lg-flex justify-content-between align-items-center">
+                    <div class="menu-wrap">
+                        <div class="main-menu">
+                            <ul>
+
+                                <li><a href="{% url 'start' %}" {% if url_name == 'start' %} class="act"{% endif %}>Home</a> </li>
+                                <li ><a href="{% url 'carriage:carriage_main' %}" {% if url_name == 'carriage_main' %} class="act"{% endif %}>Make request</a></li>
+                                <li><a href="{% url 'carriage:warehouse' %}" {% if url_name == 'warehouse' %} class="act"{% endif %}>Warehouses<i class="fas fa-angle-down"></i></a>
+
+                                    <ul class="sub-menu">
+                                        {% for nav_item in nav_warehouses %}
+
+                                            <li><a href="{% url 'carriage:warehouse_detail' pk=nav_item.pk %}" {% if url_name == 'warehouse_detail' and nav_item.id == prev_id %} class="act"{% endif %}>{{ nav_item.name }}  <img src="{{ nav_item.city.country.flag_small.url }}"></a></li>
+
+                                        {% endfor %}
+                                    </ul>
+
+                                </li>
+                                <li><a href="{% url 'carriage:news' %}" {% if url_name == 'news' %} class="act"{% endif %}>News</a></li>
+
+                                <li><a href="{% url 'carriage:contacts' %}" {% if url_name == 'contacts' %} class="act"{% endif %}>Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            {% endwith %}
+                <div class="d-block d-lg-none col-sm-1 col-md-8 col-6">
+                    <div class="mobile-nav-wrap">
+                        <div id="hamburger"><i class="fal fa-bars"></i></div>
+                        <!-- mobile menu - responsive menu  -->
+                        <div class="mobile-nav">
+                            <button type="button" class="close-nav">
+                                <i class="fal fa-times-circle"></i>
+                            </button>
+                            <nav class="sidebar-nav">
+                                <ul class="metismenu" id="mobile-menu">
+                                    <li><a class="has-arrow" href="#">Homes</a>
+
+                                    </li>
+                                    <li><a href="{% url 'start' %}" {% if url_name == 'start' %} class="act"{% endif %}>Home</a></li>
+                                    <li><a href="{% url 'carriage:carriage_main' %}" {% if url_name == 'carriage_main' %} class="act"{% endif %}>Make request</a></li>
+                                    <li>
+                                        <a class="has-arrow" href="{% url 'carriage:warehouse' %}" {% if url_name == 'carriage:warehouse' %} class="act"{% endif %}>Warehouses</a>
+                                        <ul class="sub-menu">
+                                            {% for nav_item in nav_warehouses %}
+                                                <li><a href="{% url 'carriage:warehouse_detail' pk=nav_item.pk %}">{{ nav_item.name }} <img src="{{ nav_item.city.country.flag_small.url }}"></a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% url 'carriage:news' %}" {% if url_name == 'news' %} class="act"{% endif %}>News</a></li>
+
+                                    <li><a href="{% url 'carriage:contacts' %}" {% if url_name == 'contacts' %} class="act"{% endif %}>Contact</a></li>
+                                </ul>
+                            </nav>
+
+                            <div class="action-bar text-white">
+                                <div class="single-info-element">
+                                    <div class="icon">
+                                        <i class="fal fa-map-marked-alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h5>visit our location:</h5>
+                                        <span>Minsk, Belarus</span>
+                                    </div>
+                                </div>
+                                <div class="single-info-element">
+                                    <div class="icon">
+                                        <i class="fal fa-clock"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h5>Opening Hours:</h5>
+                                        <span>Mon-Fri 8am-5pm</span>
+                                    </div>
+                                </div>
+                                <div class="single-info-element">
+                                    <div class="icon">
+                                        <i class="fal fa-envelope"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h5>Contact us</h5>
+                                        <span>info@example.com</span>
+                                    </div>
+                                </div>
+                                <div class="call-us">
+                                    <div class="icon text-white">
+                                        <i class="fal fa-phone-volume"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h5>Get In Touch With Us</h5>
+                                        <span>+37517123456</span>
+                                    </div>
+                                </div>
+                                <a href="contact.html" class="theme-btn mt-4">Track Your Shipment</a>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+     {%  block carriage_content %}  {% endblock %}
+
+ {% endblock %}

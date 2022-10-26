@@ -31,6 +31,7 @@ class Vertex:
         self.visited = False
         self._added_time = 0
         self._added_price = 0
+        self.log = []
 
         if Vertex.qs.get(name=self.name).country.cust_territory != \
                 Vertex.qs.get(name=previous.name).country.cust_territory:
@@ -67,16 +68,25 @@ class Vertex:
         checked_time = previous.totaltime + (a - self._worktime) + b * 10
         self.totaltime = checked_time + (checked_time // 120) * 36 + self._added_time
 
+    class HtmlCity:
+        def __init__(self, cityname):
+            self.name = cityname
+            self.country = Vertex.qs.get(name=cityname).country.name
+            self.flag = Vertex.qs.get(name=cityname).country.flag_small
+
+
     def get_log(self, start):
+
         self.start = start.name
-        self.log.append(self.name)
+        self.log.append(Vertex.HtmlCity(self.name))
         k = self
         while k.name != start.name:
             for i in Vertex.vertices:
                 if i.name == k.previous_name:
-                    self.log.append(i.name)
+                    self.log.append(Vertex.HtmlCity(i.name))
                     k = i
         self.log.reverse()
+
 
     def get_cleaned_time(self):
         self.days = int(self.totaltime // 24)
@@ -122,7 +132,7 @@ def shortest(start_str, finish_str, selection):
         next_vertex.visited = True
         # Проверяем, является ли следующая выбранная вершина пунктом назначения
         if next_vertex.name == finish_str:
-            next_vertex.log = []
+
             next_vertex.get_log(start)
             next_vertex.get_cleaned_time()
             break
