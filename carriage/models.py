@@ -44,7 +44,7 @@ class City(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return str(self.name)
+        return str(f'{self.name} ({self.country.name})')
 
 
 class Coefficient(models.Model):
@@ -90,7 +90,7 @@ class BorderCrossing(models.Model):
     add_price = models.IntegerField(null=False, verbose_name='Costs for border-crossing', default=1)
 
     class Meta:
-        verbose_name = 'Border Crossinge'
+        verbose_name = 'Border Crossing'
         verbose_name_plural = 'Border Crossings'
         unique_together = ['from_cust_territory', 'to_cust_territory']
 
@@ -162,8 +162,8 @@ class ContactRequest(models.Model):
         ordering = ['-req_date']
 
     def __str__(self):
-        return str(f'{self.req_date.date()} from {self.fname} on {self.subject}')
+        return str(f'{self.req_date.date()} from {self.fname} on subject "{self.subject}"')
 
 
 list_of_models = [CustTerritory, Country, City, Coefficient, Distance,
-                  BorderCrossing, SiteContentData, News, Warehouse, ContactRequest]
+                  BorderCrossing, SiteContentData, News, Warehouse]
