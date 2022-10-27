@@ -26,34 +26,28 @@
                 </div>
             </div>
 
-
-        {% for warehouse in warehouses %}
-            <div class="single-price-bar">
-                <div class="row align-items-center">
-                    <div class="col-xl-4">
-                        <div class="package-name">
-                            <h3>{{ warehouse.name}}</h3>
+            {% for warehouse in warehouses %}
+                <div class="single-price-bar">
+                    <div class="row align-items-center">
+                        <div class="col-xl-4">
+                            <div class="package-name">
+                                <h3>{{ warehouse.name}}</h3>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xl-4 pe-xl-0">
-                        <div class="package-features">
-                            <span>{{ warehouse.address }}Custom business rules</span>
-
+                        <div class="col-xl-4 pe-xl-0">
+                            <div class="package-features">
+                                <span>{{ warehouse.address }}Custom business rules</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xl-2">
-
+                        <div class="col-xl-2">
                             <img src="{{ warehouse.city.country.flag_large.url}}">
-
-                    </div>
-                    <div class="col-xl-2 text-xl-end">
-                        <a href="{% url 'carriage:warehouse_detail' pk=warehouse.pk %}" class="theme-btn minimal-btn">View Picing <i class="fal fa-long-arrow-right"></i></a>
+                        </div>
+                        <div class="col-xl-2 text-xl-end">
+                            <a href="{% url 'carriage:warehouse_detail' pk=warehouse.pk %}" class="theme-btn minimal-btn">View Picing <i class="fal fa-long-arrow-right"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-
-
+            {% endfor %}
         </div>
     </section>
 

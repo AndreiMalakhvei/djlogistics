@@ -17,99 +17,95 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-12">
-                <div class="row resultheader">
-                    <div class="col-md-6 offset-md-4">
-                        <h4>Request result</h4>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4 offset-md-2">
-                        <p>City of Departure:</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p>{{ res.start }}</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p></p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4 offset-md-2">
-                        <p>City of Destination:</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p>{{ res.name }}</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p></p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4 offset-md-2">
-                        <p>Distance</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p>{{ res.distance }}</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p>km</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4 offset-md-2">
-                        <p>Transit cities</p>
-                    </div>
-
-
-                    <div class="col-md-6">
-                        <div class="row">
-
-                            {% for x in res.log %}
-                                <div class="col-md-4">
-                                    {{ x.name }}
-                                </div>
-                                <div class="col-md-2">
-                                    <img src="{{ x.flag.url }}" title="{{ x.country }}">
-                                </div>
-                                <div class="col-md-6">
-                                </div>
-                            {%  endfor %}
+                    <div class="row resultheader">
+                        <div class="col-md-6 offset-md-4">
+                            <h4>Request result</h4>
                         </div>
                     </div>
 
-                    <div class="col-md-2">
-                        <p></p>
+                    <div class="row">
+                        <div class="col-md-4 offset-md-2">
+                            <p>City of Departure:</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p>{{ res.start }}</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p></p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-4 offset-md-2">
-                        <h5>Transit time:</h5>
+                    <div class="row">
+                        <div class="col-md-4 offset-md-2">
+                            <p>City of Destination:</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p>{{ res.name }}</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p></p>
+                        </div>
                     </div>
-                    <div class="col-md-2">
-                        <h5>{{ res.days }} {% if res.days == 1 %}day{% else %}day{% endif %}</h5>
-                    </div>
-                    <div class="col-md-2">
-                        <h5>{{ res.hours }} {% if res.days == 1 %}hour{% else %}hours{% endif %}</h5>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-4 offset-md-2">
-                        <h5>Price:</h5>
+                    <div class="row">
+                        <div class="col-md-4 offset-md-2">
+                            <p>Distance</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p>{{ res.distance }}</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p>km</p>
+                        </div>
                     </div>
-                    <div class="col-md-2">
-                        <h5>{{ res.price }}</h5>
-                    </div>
-                    <div class="col-md-2">
-                        <h5>EUR</h5>
-                    </div>
-                </div>
 
+                    <div class="row">
+                        <div class="col-md-4 offset-md-2">
+                            <p>Transit cities</p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="row">
+                                {% for x in res.log %}
+                                    <div class="col-md-4">
+                                        {{ x.name }}
+                                    </div>
+                                    <div class="col-md-2">
+                                        <img src="{{ x.flag.url }}" title="{{ x.country }}">
+                                    </div>
+                                    <div class="col-md-6"></div>
+                                {%  endfor %}
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 offset-md-2">
+                            <h5>Transit time:</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <h5>{{ res.days }} {% if res.days == 1 %}day{% else %}days{% endif %}</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <h5>{{ res.hours }} {% if res.days == 1 %}hour{% else %}hours{% endif %}</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 offset-md-2">
+                            <h5>Price:</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <h5>{{ res.price }}</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <h5>EUR</h5>
+                        </div>
+                    </div>
                </div>
             </div>
         </div>

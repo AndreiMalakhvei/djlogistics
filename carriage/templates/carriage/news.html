@@ -27,30 +27,23 @@
                     <div class="blog-posts">
 
                         {% for article in page_obj %}
-
                         <div class="single-blog-post">
                             <div class="post-featured-thumb bg-cover" style="background-image: url('{{ article.news_image.url }}')"></div>
                             <div class="post-content">
 
                                 <h2><a href="{%  url 'carriage:news_detail' pk=article.pk  %}">{{ article.title }}</a></h2>
                                 <div class="post-meta">
-
                                     <span><i class="fal fa-calendar-alt"></i>{{ article.date_of_news }}</span>
                                 </div>
                                 <p>{{ article.body|truncatechars:100 }}</p>
                                 <div class="d-flex justify-content-between align-items-center mt-30">
-
                                     <div class="post-link">
                                         <a href="{%  url 'carriage:news_detail' pk=article.pk  %}"><i class="fal fa-arrow-right"></i> Read More</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         {% endfor %}
-
-
-
                     </div>
 
                     <div class="page-nav-wrap mt-60 text-center">
@@ -59,21 +52,16 @@
                             <li><a class="page-numbers" href="?page={{ page_obj.previous_page_number }}"><i class="fal fa-long-arrow-left"></i></a></li>
                             {% endif %}
 
-
                             {% for page in page_obj.paginator.page_range %}
 
                             <li><a class="page-numbers {% if page == page_obj.number %} pagactive {% endif %}" href="?page={{ page }}">{{ page }}</a></li>
                             {% endfor %}
-
 
                             {% if page_obj.has_next %}
                             <li><a class="page-numbers" href="?page={{ page_obj.next_page_number }}"><i class="fal fa-long-arrow-right"></i></a></li>
                             {% endif %}
                         </ul>
                     </div> <!-- /.col-12 col-lg-12 -->
-
-
-
 
                 </div>
                 <div class="col-12 col-lg-4">
@@ -89,8 +77,6 @@
                                 </form>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
