@@ -105,7 +105,7 @@ class FirstVertex:
         self.price = 0
         self.value = self.distance
         self.destinations = graph[self.name]
-        self._worktime = 0
+        self.worktime = 0
         self.totaltime = 0
         self.previous_name = None
         Vertex.vertices.append(self)
