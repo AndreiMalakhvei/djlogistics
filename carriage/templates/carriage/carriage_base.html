@@ -46,8 +46,6 @@
                             </ul>
                         </div>
                     </div>
-
-
                 </div>
             {% endwith %}
                 <div class="d-block d-lg-none col-sm-1 col-md-8 col-6">
@@ -60,9 +58,7 @@
                             </button>
                             <nav class="sidebar-nav">
                                 <ul class="metismenu" id="mobile-menu">
-                                    <li><a class="has-arrow" href="#">Homes</a>
 
-                                    </li>
                                     <li><a href="{% url 'start' %}" {% if url_name == 'start' %} class="act"{% endif %}>Home</a></li>
                                     <li><a href="{% url 'carriage:carriage_main' %}" {% if url_name == 'carriage_main' %} class="act"{% endif %}>Make request</a></li>
                                     <li>
@@ -116,7 +112,7 @@
                                         <span>+37517123456</span>
                                     </div>
                                 </div>
-                                <a href="contact.html" class="theme-btn mt-4">Track Your Shipment</a>
+
                             </div>
                         </div> 
                     </div>

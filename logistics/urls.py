@@ -26,6 +26,7 @@ urlpatterns = [
     path('carriage/', include('carriage.urls')),
     path('admin/', admin.site.urls),
     path('', views.start_page, name='start'),
+    path('__debug__/', include('debug_toolbar.urls')),
     ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
