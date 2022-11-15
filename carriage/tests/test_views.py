@@ -4,7 +4,7 @@ from django.urls import reverse
 from carriage import views
 
 
-class GeneralViewTestCase(TestCase):
+class SimpleViewTestCase(TestCase):
 
     def test_start_correct_view_and_template(self):
         response = self.client.get(reverse('start'))
@@ -30,16 +30,27 @@ class GeneralViewTestCase(TestCase):
         self.assertTemplateUsed(response, template_name='carriage/contacts_result.html')
         self.assertEqual(response.resolver_match.func, views.contacts_result)
 
-    def test_warehouse_main_correct_view_and_template(self):
+    def test_warehouse_correct_view_and_template(self):
         response = self.client.get(reverse('carriage:warehouse'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='carriage/warehouse.html')
         self.assertEqual(response.resolver_match.func, views.warehouse)
 
+    def test_search_correct_view_and_template(self):
+        response = self.client.get(reverse('carriage:search'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name='carriage/search.html')
+        self.assertEqual(response.resolver_match.func, views.search)
+
+    # def test_warehouse_detail_correct_view_and_template(self):
+    #     response = self.client.get(reverse('carriage:warehouse_detail'))
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTemplateUsed(response, template_name='carriage/warehouse_detail.html')
+    #     self.assertEqual(response.resolver_match.func, views.warehouse_detail)
 
 
-
-
-
+# class DbDependentViewTestCase(TestCase):
+#     @classmethod
+#     def setUpTestData(cls):
 
 
