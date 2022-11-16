@@ -21,7 +21,7 @@ class RouteFindForm(forms.Form):
         from_city = cleaned_data.get("from_city")
         if to_city == from_city:
             raise ValidationError(
-                "Cities of departure and destination must be different "
+                "Cities of departure and destination must be different"
             )
 
 

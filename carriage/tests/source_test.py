@@ -17,7 +17,6 @@ list_city = [
     (23, 'Belgrade', 11, 0, 0),
     (11, 'Milan', 7, 0, 0),
     (7, 'Frankfurt-am-Main', 4, 1, 0),
-    (16, 'Prague', 9, 0, 0)
     ]
 # Country
 # id, name, flag_large, flag_small, cust_territory
@@ -28,7 +27,6 @@ list_country = [
     (7, 'Italy', 'EU', 'img/flaglarge/ita.png', 'img/flagsmall/ita.png'),
     (10, 'Austria', 'EU', 'img/flaglarge/aut.png', 'img/flagsmall/aut.png'),
     (11, 'Serbia', 'SR',  'img/flaglarge/ser.png', 'img/flagsmall/ser.png'),
-    (9,	'Czech Rep.', 'EU',	'img/flaglarge/cze.png', 'img/flagsmall/cze.png')
     ]
 # CustTerritory
 # cust_territory, territory_name

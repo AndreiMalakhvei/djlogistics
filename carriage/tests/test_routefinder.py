@@ -2,6 +2,8 @@ from django.test import TestCase
 from carriage.models import City, CustTerritory, Coefficient, Country, Distance
 from . import source_test
 from carriage.routefinder import get_graph, shortest
+from ..forms import RouteFindForm
+
 
 class DbDependentViewTestCase(TestCase):
     @classmethod
@@ -19,12 +21,18 @@ class DbDependentViewTestCase(TestCase):
 
 
     def test_graph_creation(self):
-        # self.graph = get_graph()
-        self.assertEqual(3, len(CustTerritory.objects.all()))
+        self.graph = get_graph()
+        self.assertEqual(len(City.objects.all()), len(self.graph))
 
-    def test_automatic_creation(self):
-        s = City.objects.all()
-        print(len(s))
+    def test_main_request_form_validation(self):
+        self.lyon = City.objects.get(pk=9)
+        data = {'from_city': self.lyon.name, 'to_city': self.lyon.name, 'selection': 1}
+        form = RouteFindForm(data=data)
+        self.assertFalse(form.is_valid())
+
+        response = self.client.post('/carriage/', data)
+        self.assertContains(response, "Cities of departure and destination must be different", 1, 200)
+
 
 
 
